@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lefèvre Dépannage — Plombier & Serrurier Paris</title>
+<meta name="description" content="Lefèvre Dépannage : plomberie, serrurerie et dépannage d'urgence à Paris. Intervention rapide 7j/7, devis gratuit.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B3A5C'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='15' fill='%23FFB23E' text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu: #1B3A5C; --bleu-clair: #2A5384;
+    --jaune: #FFB23E; --jaune-fonce: #E89A20;
+    --gris: #F4F6F8; --texte: #1E2A38; --texte-doux: #5E6B7A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--texte); background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; line-height: 1.1; text-transform: uppercase; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+  .demo-banner { background: linear-gradient(90deg, #1A2B4A, #FF6B5B); color: #fff; text-align: center; padding: 9px 16px; font-size: 13px; font-weight: 500; }
+  .demo-banner strong { font-weight: 700; }
+
+  /* Barre urgence */
+  .urgence-bar { background: var(--jaune); color: var(--bleu); text-align: center; padding: 10px; font-weight: 700; font-size: 14px; }
+  .urgence-bar a { color: var(--bleu); }
+
+  nav { position: sticky; top: 0; z-index: 100; background: #fff; box-shadow: 0 2px 14px rgba(27,58,92,0.08); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 28px; max-width: 1120px; margin: 0 auto; }
+  .logo { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: var(--bleu); text-transform: uppercase; }
+  .logo span { color: var(--jaune-fonce); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 14px; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--jaune-fonce); }
+  .nav-cta { background: var(--bleu); color: #fff !important; padding: 11px 22px; border-radius: 4px; font-size: 14px; font-weight: 600; }
+  .burger { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--bleu); }
+
+  .hero { background: linear-gradient(120deg, var(--bleu) 60%, var(--bleu-clair)); color: #fff; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; right: -120px; top: -120px; width: 460px; height: 460px; background: rgba(255,178,62,0.12); border-radius: 50%; }
+  .hero-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 50px; align-items: center; padding: 80px 0; position: relative; z-index: 2; }
+  .hero-badge { display: inline-block; background: rgba(255,178,62,0.18); color: var(--jaune); padding: 7px 16px; border-radius: 4px; font-size: 13px; font-weight: 600; margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(40px, 6vw, 64px); margin-bottom: 20px; }
+  .hero h1 span { color: var(--jaune); }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 30px; max-width: 480px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 28px; border-radius: 4px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all .2s; border: 2px solid transparent; }
+  .btn-jaune { background: var(--jaune); color: var(--bleu); }
+  .btn-jaune:hover { background: #fff; }
+  .btn-ligne { background: transparent; color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-ligne:hover { background: #fff; color: var(--bleu); }
+  .hero-img { border-radius: 8px; overflow: hidden; }
+  .hero-img img { width: 100%; height: 380px; object-fit: cover; }
+
+  /* Réassurance */
+  .reassurance { background: var(--gris); padding: 36px 0; }
+  .reassurance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .reass-item { display: flex; gap: 12px; align-items: center; }
+  .reass-ico { font-size: 28px; }
+  .reass-item strong { display: block; color: var(--bleu); font-size: 15px; }
+  .reass-item span { font-size: 13px; color: var(--texte-doux); }
+
+  section { padding: 80px 0; }
+  .section-head { text-align: center; margin-bottom: 50px; }
+  .eyebrow { color: var(--jaune-fonce); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+  .section-title { font-size: clamp(32px, 4.5vw, 46px); color: var(--bleu); }
+
+  /* Services */
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .service-card { border: 1px solid #E3E8ED; border-radius: 8px; padding: 34px 28px; transition: all .25s; }
+  .service-card:hover { border-color: var(--jaune); box-shadow: 0 14px 36px rgba(27,58,92,0.1); transform: translateY(-4px); }
+  .service-ico { width: 56px; height: 56px; background: var(--bleu); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 20px; }
+  .service-card h3 { font-size: 23px; color: var(--bleu); margin-bottom: 12px; }
+  .service-card p { font-size: 14px; color: var(--texte-doux); margin-bottom: 14px; }
+  .service-card ul { list-style: none; }
+  .service-card li { font-size: 13px; color: var(--texte-doux); padding-left: 20px; position: relative; margin-bottom: 6px; }
+  .service-card li::before { content: '✓'; position: absolute; left: 0; color: var(--jaune-fonce); font-weight: 700; }
+
+  /* Zone + CTA */
+  .zone { background: var(--bleu); color: #fff; }
+  .zone-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .zone .section-title { color: #fff; text-align: left; }
+  .zone .eyebrow { color: var(--jaune); }
+  .zone p { color: rgba(255,255,255,0.82); margin-bottom: 16px; }
+  .zone-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .zone-tag { background: rgba(255,178,62,0.16); color: var(--jaune); padding: 7px 14px; border-radius: 4px; font-size: 13px; font-weight: 600; }
+  .zone-card { background: var(--jaune); color: var(--bleu); border-radius: 10px; padding: 40px; text-align: center; }
+  .zone-card h3 { font-size: 30px; margin-bottom: 10px; }
+  .zone-card .phone { font-family: 'Barlow Condensed', sans-serif; font-size: 38px; font-weight: 700; margin: 14px 0; }
+  .zone-card p { color: var(--bleu); opacity: 0.8; font-size: 14px; }
+
+  footer { background: #14283D; color: rgba(255,255,255,0.6); padding: 50px 0 28px; text-align: center; }
+  .footer-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; color: #fff; text-transform: uppercase; margin-bottom: 10px; }
+  .footer-logo span { color: var(--jaune); }
+  .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 30px; padding-top: 24px; display: flex; justify-content: center; gap: 8px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+
+  @media (max-width: 820px) {
+    .nav-links { display: none; } .burger { display: block; }
+    .hero-inner, .zone-inner { grid-template-columns: 1fr; gap: 36px; }
+    .reassurance-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>DÉMO ESSENTIELLE · 1490 €</strong> — Site adaptable à votre identité (nom, métier, zone, couleurs)</div>
+
+<div class="urgence-bar">⚡ Urgence ? Intervention rapide 7j/7 — <a href="tel:0145678910">01 45 67 89 10</a></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Lefèvre <span>Dépannage</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#zone">Zone d'intervention</a></li>
+      <li><a href="#contact" class="nav-cta">Devis gratuit</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <span class="hero-badge">⚡ Intervention en 30 min</span>
+        <h1>Plombier &amp; serrurier à <span>Paris</span></h1>
+        <p>Fuite, panne, porte claquée ? Lefèvre Dépannage intervient rapidement, 7j/7, avec un devis clair et sans surprise.</p>
+        <div class="hero-btns">
+          <a href="tel:0145678910" class="btn btn-jaune">📞 Appeler maintenant</a>
+          <a href="#contact" class="btn btn-ligne">Demander un devis</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=800&q=80" alt="Artisan plombier au travail">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="reassurance">
+  <div class="container">
+    <div class="reassurance-grid">
+      <div class="reass-item"><span class="reass-ico">⏱️</span><div><strong>7j/7 — 24h/24</strong><span>Urgences incluses</span></div></div>
+      <div class="reass-item"><span class="reass-ico">📋</span><div><strong>Devis gratuit</strong><span>Prix annoncé à l'avance</span></div></div>
+      <div class="reass-item"><span class="reass-ico">🛡️</span><div><strong>Travail garanti</strong><span>Artisan assuré</span></div></div>
+      <div class="reass-item"><span class="reass-ico">⭐</span><div><strong>4,8/5</strong><span>Sur 140 avis clients</span></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">Nos prestations</p>
+      <h2 class="section-title">Ce que nous faisons</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-ico">🔧</div>
+        <h3>Plomberie</h3>
+        <p>Tous travaux de plomberie, de la petite réparation au remplacement complet.</p>
+        <ul>
+          <li>Recherche et réparation de fuite</li>
+          <li>Débouchage canalisation</li>
+          <li>Installation sanitaire</li>
+          <li>Chauffe-eau &amp; robinetterie</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">🔑</div>
+        <h3>Serrurerie</h3>
+        <p>Ouverture, dépannage et sécurisation de tous types de portes.</p>
+        <ul>
+          <li>Ouverture de porte claquée</li>
+          <li>Changement de serrure</li>
+          <li>Pose de verrou de sécurité</li>
+          <li>Blindage de porte</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-ico">⚡</div>
+        <h3>Dépannage d'urgence</h3>
+        <p>Une urgence ? Nous intervenons rapidement, jour et nuit.</p>
+        <ul>
+          <li>Intervention en 30 min</li>
+          <li>Diagnostic immédiat</li>
+          <li>Devis avant intervention</li>
+          <li>7j/7, jours fériés inclus</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="zone" id="zone">
+  <div class="container">
+    <div class="zone-inner">
+      <div>
+        <p class="eyebrow">Zone d'intervention</p>
+        <h2 class="section-title">Nous intervenons<br>dans tout Paris</h2>
+        <p>Basés dans le 15ème, nous nous déplaçons rapidement dans Paris et la proche banlieue.</p>
+        <div class="zone-list">
+          <span class="zone-tag">Paris 14</span><span class="zone-tag">Paris 15</span>
+          <span class="zone-tag">Paris 16</span><span class="zone-tag">Paris 7</span>
+          <span class="zone-tag">Issy-les-Moulineaux</span><span class="zone-tag">Boulogne</span>
+          <span class="zone-tag">Vanves</span><span class="zone-tag">Malakoff</span>
+        </div>
+      </div>
+      <div class="zone-card" id="contact">
+        <h3>Besoin d'un dépannage ?</h3>
+        <p>Appelez-nous, on vous répond tout de suite.</p>
+        <div class="phone">01 45 67 89 10</div>
+        <a href="tel:0145678910" class="btn btn-jaune" style="background:var(--bleu);color:#fff;">📞 Appeler maintenant</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">Lefèvre <span>Dépannage</span></div>
+    <p style="font-size:14px;">Plombier &amp; serrurier · Paris et proche banlieue · 01 45 67 89 10 · 7j/7</p>
+    <div class="footer-bottom">
+      <span>© 2026 Lefèvre Dépannage —</span>
+      <span style="display:flex;align-items:center;gap:7px;">
+        <svg width="16" height="16" viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="74" height="74" rx="14" fill="#1A2B4A"/><g transform="translate(37,37)"><path d="M 0 -22 L 3 -3 L 0 0 L -3 -3 Z" fill="#FFFFFF"/><path d="M 0 22 L 3 3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M -22 0 L -3 -3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M 22 0 L 3 -3 L 0 0 L 3 3 Z" fill="#FF6B5B"/><circle cx="0" cy="0" r="2.5" fill="#FFFFFF"/></g></svg>
+        Site créé par <a href="https://ijgenesys.github.io/ijgenesys2/" style="color:#FFB23E;">IJ Genesys</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

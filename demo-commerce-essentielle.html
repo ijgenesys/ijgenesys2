@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Botanique — Fleuriste à Paris</title>
+<meta name="description" content="Atelier Botanique, fleuriste créateur à Paris. Bouquets, compositions et décorations florales sur mesure.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23304834'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='17' fill='%23D9A87C' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vert: #304834; --vert-clair: #4A6A50;
+    --creme: #F8F3EB; --creme-fonce: #EDE4D3;
+    --rose: #D9A87C; --rose-fonce: #C18B5C;
+    --texte: #2A2A24; --texte-doux: #6B6B5E;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; color: var(--texte); background: var(--creme); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 500; line-height: 1.15; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; }
+  .demo-banner { background: linear-gradient(90deg, #1A2B4A, #FF6B5B); color: #fff; text-align: center; padding: 9px 16px; font-size: 13px; font-weight: 500; }
+  .demo-banner strong { font-weight: 600; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(248,243,235,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(48,72,52,0.1); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; max-width: 1100px; margin: 0 auto; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 25px; font-weight: 500; color: var(--vert); font-style: italic; }
+  .logo span { color: var(--rose-fonce); }
+  .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 14px; letter-spacing: 0.06em; transition: color .2s; text-transform: uppercase; }
+  .nav-links a:hover { color: var(--rose-fonce); }
+  .nav-cta { background: var(--vert); color: var(--creme) !important; padding: 11px 22px; border-radius: 2px; font-size: 12px; letter-spacing: 0.1em; }
+  .burger { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--vert); }
+
+  .hero { position: relative; min-height: 86vh; display: flex; align-items: center;
+    background: linear-gradient(rgba(28,40,30,0.45), rgba(28,40,30,0.6)), url('https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=1600&q=80') center/cover; color: var(--creme); }
+  .hero-content { max-width: 640px; }
+  .hero-eyebrow { font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose); margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(46px, 7vw, 78px); font-weight: 400; color: #fff; margin-bottom: 22px; }
+  .hero h1 em { font-style: italic; color: var(--rose); }
+  .hero p { font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.88); max-width: 480px; margin-bottom: 34px; }
+  .btn { display: inline-block; padding: 16px 34px; border-radius: 2px; font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; cursor: pointer; transition: all .25s; }
+  .btn-primary { background: var(--rose); color: var(--vert); }
+  .btn-primary:hover { background: #fff; }
+
+  section { padding: 90px 0; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--rose-fonce); margin-bottom: 16px; }
+  .section-title { font-size: clamp(32px, 4.5vw, 46px); color: var(--vert); margin-bottom: 20px; }
+  .section-title em { font-style: italic; color: var(--rose-fonce); }
+  .apropos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .apropos-grid img { border-radius: 4px; height: 440px; width: 100%; object-fit: cover; }
+  .apropos p { color: var(--texte-doux); margin-bottom: 16px; }
+
+  /* Créations */
+  .creations { background: var(--vert); color: var(--creme); }
+  .creations .section-title { color: #fff; }
+  .creations .eyebrow { color: var(--rose); }
+  .creations-header { text-align: center; margin-bottom: 50px; }
+  .creations-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .creation-card { background: rgba(255,255,255,0.04); border-radius: 4px; overflow: hidden; }
+  .creation-card img { width: 100%; height: 280px; object-fit: cover; }
+  .creation-body { padding: 24px; }
+  .creation-card h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: #fff; margin-bottom: 6px; }
+  .creation-card p { font-size: 13px; color: rgba(248,243,235,0.7); margin-bottom: 14px; }
+  .creation-price { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--rose); }
+
+  /* Infos */
+  .infos { background: var(--creme-fonce); }
+  .infos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .infos-list { list-style: none; }
+  .infos-list li { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(48,72,52,0.1); }
+  .infos-list li:last-child { border-bottom: none; }
+  .infos-ico { font-size: 22px; }
+  .infos-list strong { display: block; color: var(--vert); font-family: 'Playfair Display', serif; }
+  .infos-list span { font-size: 14px; color: var(--texte-doux); }
+  .infos-map { border-radius: 4px; overflow: hidden; height: 380px; }
+  .infos-map iframe { width: 100%; height: 100%; border: 0; }
+
+  .cta { text-align: center; background: var(--vert); color: var(--creme); }
+  .cta .section-title { color: #fff; }
+  .cta p { color: rgba(248,243,235,0.78); max-width: 480px; margin: 0 auto 30px; }
+
+  footer { background: #243029; color: rgba(248,243,235,0.6); padding: 50px 0 28px; text-align: center; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-style: italic; font-size: 25px; color: var(--creme); margin-bottom: 12px; }
+  .footer-logo span { color: var(--rose); }
+  .footer-bottom { border-top: 1px solid rgba(248,243,235,0.1); margin-top: 32px; padding-top: 24px; display: flex; justify-content: center; gap: 8px; align-items: center; font-size: 13px; flex-wrap: wrap; }
+
+  @media (max-width: 820px) {
+    .nav-links { display: none; } .burger { display: block; }
+    .apropos-grid, .infos-grid { grid-template-columns: 1fr; gap: 36px; }
+    .creations-grid { grid-template-columns: 1fr; }
+    section { padding: 60px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>DÉMO ESSENTIELLE · 1490 €</strong> — Site adaptable à votre identité (nom, photos, créations, couleurs)</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Atelier <span>Botanique</span></a>
+    <ul class="nav-links">
+      <li><a href="#apropos">L'atelier</a></li>
+      <li><a href="#creations">Créations</a></li>
+      <li><a href="#infos">Visite</a></li>
+      <li><a href="tel:0142000000" class="nav-cta">Commander</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Fleuriste créateur · Paris</p>
+      <h1>L'art floral, pensé comme une <em>composition</em></h1>
+      <p>Des bouquets sur mesure, des plantes choisies avec soin, des compositions pour vos plus beaux moments.</p>
+      <a href="#creations" class="btn btn-primary">Découvrir les créations</a>
+    </div>
+  </div>
+</header>
+
+<section id="apropos">
+  <div class="container">
+    <div class="apropos-grid">
+      <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=900&q=80" alt="L'atelier">
+      <div>
+        <p class="eyebrow">L'atelier</p>
+        <h2 class="section-title">Une <em>passion</em> du végétal</h2>
+        <p>Atelier Botanique est né en 2015 d'un amour pour les fleurs de saison et les plantes vivantes. Chaque composition est unique, pensée comme une petite œuvre.</p>
+        <p>Nous travaillons avec des producteurs français et privilégions les fleurs locales et de saison, pour des créations belles et responsables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="creations" id="creations">
+  <div class="container">
+    <div class="creations-header">
+      <p class="eyebrow">Nos créations</p>
+      <h2 class="section-title">Quelques <em>bouquets</em></h2>
+    </div>
+    <div class="creations-grid">
+      <div class="creation-card">
+        <img src="https://images.unsplash.com/photo-1561181286-d3fee7d55364?w=600&q=80" alt="Bouquet du jour">
+        <div class="creation-body">
+          <h3>Bouquet du jour</h3>
+          <p>Composition de saison, renouvelée chaque matin.</p>
+          <div class="creation-price">à partir de 35 €</div>
+        </div>
+      </div>
+      <div class="creation-card">
+        <img src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?w=600&q=80" alt="Composition mariage">
+        <div class="creation-body">
+          <h3>Mariage &amp; événement</h3>
+          <p>Compositions sur mesure pour vos grands jours.</p>
+          <div class="creation-price">sur devis</div>
+        </div>
+      </div>
+      <div class="creation-card">
+        <img src="https://images.unsplash.com/photo-1463320726281-696a485928c7?w=600&q=80" alt="Plantes d'intérieur">
+        <div class="creation-body">
+          <h3>Plantes d'intérieur</h3>
+          <p>Une sélection de plantes choisies pour durer.</p>
+          <div class="creation-price">à partir de 18 €</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="container">
+    <div class="infos-grid">
+      <div>
+        <p class="eyebrow">Nous trouver</p>
+        <h2 class="section-title">Visiter <em>l'atelier</em></h2>
+        <ul class="infos-list">
+          <li><span class="infos-ico">📍</span><div><strong>Adresse</strong><span>42 rue des Vignes, 75016 Paris</span></div></li>
+          <li><span class="infos-ico">🕒</span><div><strong>Horaires</strong><span>Mardi au samedi · 10h–19h30 · Dimanche 10h–13h</span></div></li>
+          <li><span class="infos-ico">📞</span><div><strong>Téléphone</strong><span>01 42 00 00 00</span></div></li>
+          <li><span class="infos-ico">🚇</span><div><strong>Accès</strong><span>Métro Jasmin (ligne 9)</span></div></li>
+        </ul>
+      </div>
+      <div class="infos-map">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.2700%2C48.8500%2C2.2850%2C48.8600&layer=mapnik" title="Plan d'accès" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <p class="eyebrow" style="color:var(--rose);">Commande</p>
+    <h2 class="section-title">Une <em>occasion</em> particulière ?</h2>
+    <p>Appelez-nous pour un bouquet sur mesure ou passez directement à l'atelier.</p>
+    <a href="tel:0142000000" class="btn btn-primary">📞 01 42 00 00 00</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">Atelier <span>Botanique</span></div>
+    <p style="font-size:14px;">Fleuriste créateur · 42 rue des Vignes, 75016 Paris · 01 42 00 00 00</p>
+    <div class="footer-bottom">
+      <span>© 2026 Atelier Botanique —</span>
+      <span style="display:flex;align-items:center;gap:7px;">
+        <svg width="16" height="16" viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="74" height="74" rx="14" fill="#1A2B4A"/><g transform="translate(37,37)"><path d="M 0 -22 L 3 -3 L 0 0 L -3 -3 Z" fill="#FFFFFF"/><path d="M 0 22 L 3 3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M -22 0 L -3 -3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M 22 0 L 3 -3 L 0 0 L 3 3 Z" fill="#FF6B5B"/><circle cx="0" cy="0" r="2.5" fill="#FFFFFF"/></g></svg>
+        Site créé par <a href="https://ijgenesys.github.io/ijgenesys2/" style="color:#D9A87C;">IJ Genesys</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

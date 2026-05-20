@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Auréa — Institut de beauté & spa parisien</title>
+<meta name="description" content="Maison Auréa, institut de beauté et spa parisien. Soins visage, massages, beauté des mains. Une parenthèse de bien-être au cœur de Paris.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23B57F5B'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='17' fill='%23F8EFE3' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Mulish:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terre: #B57F5B; --terre-fonce: #97653F;
+    --nude: #F4E6D7; --nude-fonce: #E5D0BB;
+    --creme: #FAF4EC;
+    --texte: #3A2E25; --texte-doux: #7B6757;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Mulish', sans-serif; color: var(--texte); background: var(--creme); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.12; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+  .demo-banner { background: linear-gradient(90deg, #1A2B4A, #FF6B5B); color: #fff; text-align: center; padding: 9px 16px; font-size: 13px; font-weight: 500; }
+  .demo-banner strong { font-weight: 600; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(250,244,236,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(181,127,91,0.1); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; max-width: 1180px; margin: 0 auto; }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 27px; color: var(--terre-fonce); }
+  .logo span { font-style: italic; color: var(--terre); }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.08em; color: var(--texte); transition: color .2s; text-transform: uppercase; }
+  .nav-links a:hover { color: var(--terre); }
+  .nav-cta { background: var(--terre); color: var(--creme) !important; padding: 11px 22px; border-radius: 100px; font-size: 13px; font-weight: 600; }
+  .burger { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--terre-fonce); }
+
+  .hero { position: relative; min-height: 90vh; display: flex; align-items: center;
+    background: linear-gradient(rgba(58,46,37,0.3), rgba(58,46,37,0.5)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1700&q=80') center/cover; color: var(--creme); }
+  .hero-content { max-width: 720px; }
+  .hero-eyebrow { font-size: 13px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--nude); margin-bottom: 26px; }
+  .hero h1 { font-size: clamp(48px, 8vw, 84px); color: #fff; margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; color: var(--nude); }
+  .hero p { font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.92); max-width: 520px; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 16px 36px; border-radius: 100px; font-size: 14px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; transition: all .25s; border: 1px solid transparent; }
+  .btn-primary { background: var(--terre); color: #fff; }
+  .btn-primary:hover { background: var(--terre-fonce); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+  .btn-ghost:hover { background: #fff; color: var(--terre-fonce); }
+
+  section { padding: 110px 0; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terre); margin-bottom: 18px; }
+  .section-title { font-size: clamp(34px, 5vw, 52px); color: var(--terre-fonce); margin-bottom: 22px; }
+  .section-title em { font-style: italic; color: var(--terre); }
+  .section-lead { font-size: 17px; color: var(--texte-doux); max-width: 540px; }
+
+  /* Histoire */
+  .histoire { background: var(--creme); }
+  .histoire-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .histoire-img img { width: 100%; height: 540px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 50px rgba(58,46,37,0.16); }
+  .histoire p { color: var(--texte-doux); margin-bottom: 16px; }
+  .histoire .signature { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; color: var(--terre); margin-top: 26px; }
+
+  /* Soins */
+  .soins { background: var(--nude); }
+  .soins-header { text-align: center; margin-bottom: 56px; }
+  .soins-header .section-lead { margin: 0 auto; }
+  .soins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .soin-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 28px rgba(58,46,37,0.06); transition: transform .3s; }
+  .soin-card:hover { transform: translateY(-6px); }
+  .soin-card img { width: 100%; height: 240px; object-fit: cover; }
+  .soin-body { padding: 28px; }
+  .soin-card h3 { font-size: 23px; color: var(--terre-fonce); margin-bottom: 8px; }
+  .soin-card .duree { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terre); margin-bottom: 12px; }
+  .soin-card p { font-size: 14px; color: var(--texte-doux); margin-bottom: 16px; }
+  .soin-price { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--terre); }
+
+  /* Univers */
+  .univers { background: var(--creme); }
+  .univers-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 14px; margin-top: 50px; }
+  .univers-grid a { overflow: hidden; border-radius: 8px; }
+  .univers-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .univers-grid a:hover img { transform: scale(1.08); }
+  .u-wide { grid-column: span 2; }
+  .u-tall { grid-row: span 2; }
+
+  /* Praticiennes */
+  .equipe { background: var(--nude-fonce); }
+  .equipe-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 50px; }
+  .equipe-card { text-align: center; background: var(--creme); border-radius: 8px; padding: 32px 26px; }
+  .equipe-card img { width: 140px; height: 140px; object-fit: cover; border-radius: 50%; margin: 0 auto 22px; }
+  .equipe-card h3 { font-size: 22px; color: var(--terre-fonce); margin-bottom: 4px; }
+  .equipe-card .role { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terre); margin-bottom: 12px; }
+  .equipe-card p { font-size: 14px; color: var(--texte-doux); }
+
+  /* Avis */
+  .avis { background: var(--terre); color: #fff; }
+  .avis .section-title { color: #fff; }
+  .avis .eyebrow { color: var(--nude); }
+  .avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 50px; }
+  .avis-card { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 32px 28px; }
+  .avis-stars { color: var(--nude); letter-spacing: 3px; margin-bottom: 14px; }
+  .avis-card p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 17px; color: rgba(255,255,255,0.95); margin-bottom: 18px; line-height: 1.5; }
+  .avis-author { font-size: 13px; color: var(--nude); }
+  .avis-source { font-size: 12px; color: rgba(255,255,255,0.55); }
+
+  /* Infos */
+  .infos { background: var(--creme); }
+  .infos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .infos-list { list-style: none; }
+  .infos-list li { display: flex; gap: 16px; padding: 20px 0; border-bottom: 1px solid rgba(181,127,91,0.15); }
+  .infos-list li:last-child { border-bottom: none; }
+  .infos-ico { font-size: 22px; }
+  .infos-list strong { display: block; color: var(--terre-fonce); font-family: 'DM Serif Display', serif; font-size: 17px; }
+  .infos-list span { font-size: 14px; color: var(--texte-doux); }
+  .infos-map { border-radius: 8px; overflow: hidden; height: 420px; box-shadow: 0 20px 50px rgba(58,46,37,0.14); }
+  .infos-map iframe { width: 100%; height: 100%; border: 0; }
+
+  /* RDV */
+  .rdv { background: linear-gradient(rgba(58,46,37,0.85), rgba(58,46,37,0.92)), url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=1700&q=80') center/cover; color: #fff; }
+  .rdv-box { max-width: 700px; margin: 0 auto; text-align: center; }
+  .rdv-box .section-title { color: #fff; }
+  .rdv-box .eyebrow { color: var(--nude); }
+  .rdv-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+  .rdv-form input, .rdv-form select { padding: 15px 18px; border-radius: 100px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); color: #fff; font-family: 'Mulish', sans-serif; font-size: 14px; }
+  .rdv-form input::placeholder { color: rgba(255,255,255,0.55); }
+  .rdv-form select { color: rgba(255,255,255,0.75); }
+  .rdv-form .full { grid-column: span 2; }
+  .rdv-form button { grid-column: span 2; background: var(--nude); color: var(--terre-fonce); border: none; padding: 17px; border-radius: 100px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; }
+  .rdv-form button:hover { background: #fff; }
+
+  footer { background: #2A2018; color: rgba(244,230,215,0.65); padding: 70px 0 32px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+  .footer-logo { font-family: 'DM Serif Display', serif; font-size: 27px; color: var(--nude); margin-bottom: 16px; }
+  .footer-logo span { font-style: italic; color: var(--terre); }
+  .footer-col h4 { font-family: 'DM Serif Display', serif; font-size: 17px; color: var(--nude); margin-bottom: 18px; }
+  .footer-col a, .footer-col p { font-size: 14px; color: rgba(244,230,215,0.6); display: block; margin-bottom: 8px; }
+  .footer-col a:hover { color: var(--nude); }
+  .footer-bottom { border-top: 1px solid rgba(244,230,215,0.1); padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; color: rgba(244,230,215,0.45); }
+  .footer-credit { display: flex; align-items: center; gap: 7px; }
+
+  @media (max-width: 880px) {
+    .nav-links { display: none; } .burger { display: block; }
+    .histoire-grid, .infos-grid, .rdv-form { grid-template-columns: 1fr; gap: 36px; }
+    .soins-grid, .equipe-grid, .avis-grid { grid-template-columns: 1fr; }
+    .univers-grid { grid-template-columns: repeat(2, 1fr); }
+    .rdv-form .full, .rdv-form button { grid-column: span 1; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+    section { padding: 70px 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>DÉMO SIGNATURE · 2490 €</strong> — Site adaptable à votre identité (nom, photos, soins, couleurs)</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">Maison <span>Auréa</span></a>
+    <ul class="nav-links">
+      <li><a href="#histoire">L'institut</a></li>
+      <li><a href="#soins">Soins</a></li>
+      <li><a href="#univers">L'univers</a></li>
+      <li><a href="#equipe">L'équipe</a></li>
+      <li><a href="#infos">Visite</a></li>
+      <li><a href="#rdv" class="nav-cta">Prendre RDV</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex'">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Institut de beauté · Spa · Paris</p>
+      <h1>Une parenthèse de <em>douceur</em></h1>
+      <p>Soins visage, massages, beauté des mains et pieds. Un cocon parisien dédié à votre bien-être.</p>
+      <div class="hero-btns">
+        <a href="#rdv" class="btn btn-primary">Prendre rendez-vous</a>
+        <a href="#soins" class="btn btn-ghost">Découvrir les soins</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="histoire" id="histoire">
+  <div class="container">
+    <div class="histoire-grid">
+      <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=80" alt="Cabine de soin">
+      <div>
+        <p class="eyebrow">L'institut</p>
+        <h2 class="section-title">Une maison <em>bienveillante</em></h2>
+        <p>Maison Auréa est un institut de beauté pensé comme un refuge. Loin de l'agitation parisienne, nous prenons le temps : le temps d'écouter, de conseiller, de soigner.</p>
+        <p>Nos soins associent gestes experts et produits naturels, sélectionnés pour leur efficacité douce, dans le respect de votre peau et de l'environnement.</p>
+        <p>Trois cabines, une atmosphère feutrée, et une équipe de praticiennes diplômées qui mettent un point d'honneur à personnaliser chaque rituel.</p>
+        <p class="signature">— Aurélie, fondatrice</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soins" id="soins">
+  <div class="container">
+    <div class="soins-header">
+      <p class="eyebrow">Nos soins</p>
+      <h2 class="section-title">Notre <em>carte</em></h2>
+      <p class="section-lead">Des rituels personnalisés, conçus pour révéler votre éclat naturel.</p>
+    </div>
+    <div class="soins-grid">
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=700&q=80" alt="Soin visage">
+        <div class="soin-body">
+          <h3>Soin visage signature</h3>
+          <p class="duree">1h15</p>
+          <p>Diagnostic, nettoyage profond, gommage, masque adapté et modelage relaxant.</p>
+          <div class="soin-price">85 €</div>
+        </div>
+      </div>
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=700&q=80" alt="Massage">
+        <div class="soin-body">
+          <h3>Massage relaxant</h3>
+          <p class="duree">1h</p>
+          <p>Modelage doux et enveloppant pour relâcher les tensions du corps et de l'esprit.</p>
+          <div class="soin-price">75 €</div>
+        </div>
+      </div>
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1542848284-8afa78a08ccb?w=700&q=80" alt="Soin signature">
+        <div class="soin-body">
+          <h3>Rituel Auréa</h3>
+          <p class="duree">2h30</p>
+          <p>Soin complet : visage signature, massage corps, beauté des mains, dans un même rituel.</p>
+          <div class="soin-price">180 €</div>
+        </div>
+      </div>
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=700&q=80" alt="Beauté des mains">
+        <div class="soin-body">
+          <h3>Beauté des mains</h3>
+          <p class="duree">45 min</p>
+          <p>Manucure complète : gommage, soin, pose de vernis classique ou semi-permanent.</p>
+          <div class="soin-price">dès 38 €</div>
+        </div>
+      </div>
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?w=700&q=80" alt="Beauté des pieds">
+        <div class="soin-body">
+          <h3>Beauté des pieds</h3>
+          <p class="duree">1h</p>
+          <p>Pédicure complète avec gommage relaxant, soin nourrissant et pose de vernis.</p>
+          <div class="soin-price">dès 52 €</div>
+        </div>
+      </div>
+      <div class="soin-card">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=700&q=80" alt="Épilation">
+        <div class="soin-body">
+          <h3>Épilation</h3>
+          <p class="duree">15-45 min</p>
+          <p>Épilation à la cire tiède, douce et précise, pour toutes les zones du visage et du corps.</p>
+          <div class="soin-price">dès 15 €</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="univers" id="univers">
+  <div class="container">
+    <div style="text-align:center;">
+      <p class="eyebrow">L'univers</p>
+      <h2 class="section-title">Notre <em>maison</em></h2>
+    </div>
+    <div class="univers-grid">
+      <a class="u-wide u-tall" href="#"><img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=80" alt=""></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=500&q=80" alt=""></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80" alt=""></a>
+      <a class="u-wide" href="#"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" alt=""></a>
+    </div>
+  </div>
+</section>
+
+<section class="equipe" id="equipe">
+  <div class="container">
+    <div style="text-align:center;">
+      <p class="eyebrow">Notre équipe</p>
+      <h2 class="section-title">Des <em>mains expertes</em></h2>
+    </div>
+    <div class="equipe-grid">
+      <div class="equipe-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Aurélie">
+        <h3>Aurélie</h3>
+        <p class="role">Fondatrice · Esthéticienne</p>
+        <p>15 ans d'expérience, spécialisée dans les soins visage anti-âge et le modelage facial.</p>
+      </div>
+      <div class="equipe-card">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80" alt="Léa">
+        <h3>Léa</h3>
+        <p class="role">Praticienne · Spa</p>
+        <p>Formée aux massages traditionnels suédois, californien et balinais.</p>
+      </div>
+      <div class="equipe-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80" alt="Mathilde">
+        <h3>Mathilde</h3>
+        <p class="role">Prothésiste ongulaire</p>
+        <p>Experte en beauté des mains et pieds, pose de vernis semi-permanent et nail art.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="avis">
+  <div class="container">
+    <div style="text-align:center;">
+      <p class="eyebrow">Elles nous recommandent</p>
+      <h2 class="section-title">Avis <em>clientes</em></h2>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Un véritable cocon ! Aurélie a des mains en or, ma peau n'a jamais été aussi belle. Je ne vais plus que chez elle. »</p>
+        <div class="avis-author">Sarah B.</div>
+        <div class="avis-source">Avis Google</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Le rituel Auréa, c'est un cadeau qu'on se fait. Deux heures hors du temps, on en ressort transformée. »</p>
+        <div class="avis-author">Camille R.</div>
+        <div class="avis-source">Avis Treatwell</div>
+      </div>
+      <div class="avis-card">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Accueil chaleureux, écoute parfaite, soins de très grande qualité. Mon institut préféré à Paris. »</p>
+        <div class="avis-author">Inès D.</div>
+        <div class="avis-source">Avis Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="container">
+    <div class="infos-grid">
+      <div>
+        <p class="eyebrow">Nous trouver</p>
+        <h2 class="section-title">Informations <em>pratiques</em></h2>
+        <ul class="infos-list">
+          <li><span class="infos-ico">📍</span><div><strong>Adresse</strong><span>12 rue de la Sérénité, 75007 Paris</span></div></li>
+          <li><span class="infos-ico">🕒</span><div><strong>Horaires</strong><span>Mardi au samedi · 10h–19h30</span></div></li>
+          <li><span class="infos-ico">📞</span><div><strong>Téléphone</strong><span>01 45 50 60 70</span></div></li>
+          <li><span class="infos-ico">✉️</span><div><strong>Email</strong><span>bonjour@maison-aurea.fr</span></div></li>
+          <li><span class="infos-ico">🚇</span><div><strong>Accès</strong><span>Métro Rue du Bac (ligne 12)</span></div></li>
+        </ul>
+      </div>
+      <div class="infos-map">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.3200%2C48.8530%2C2.3350%2C48.8620&layer=mapnik" title="Plan d'accès" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rdv" id="rdv">
+  <div class="container">
+    <div class="rdv-box">
+      <p class="eyebrow">Rendez-vous</p>
+      <h2 class="section-title">Réservez votre <em>moment</em></h2>
+      <p style="color:rgba(255,255,255,0.85);">Indiquez vos préférences, nous vous confirmons votre rendez-vous sous quelques heures.</p>
+      <form class="rdv-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='✓ Demande envoyée — merci !';">
+        <input type="text" placeholder="Votre nom" required>
+        <input type="tel" placeholder="Téléphone" required>
+        <input type="email" class="full" placeholder="Email" required>
+        <select class="full" required>
+          <option value="">Soin souhaité</option>
+          <option>Soin visage signature</option><option>Massage relaxant</option>
+          <option>Rituel Auréa</option><option>Beauté des mains</option>
+          <option>Beauté des pieds</option><option>Épilation</option>
+        </select>
+        <input type="date" required>
+        <select required>
+          <option value="">Créneau</option>
+          <option>Matin</option><option>Après-midi</option><option>Soir</option>
+        </select>
+        <button type="submit">Demander un rendez-vous</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Maison <span>Auréa</span></div>
+        <p style="font-size:14px;max-width:300px;">Institut de beauté parisien. Soins visage, massages, beauté des mains et pieds.</p>
+      </div>
+      <div class="footer-col">
+        <h4>L'institut</h4>
+        <a href="#histoire">Notre maison</a>
+        <a href="#soins">Soins</a>
+        <a href="#equipe">L'équipe</a>
+        <a href="#univers">Galerie</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>12 rue de la Sérénité<br>75007 Paris</p>
+        <p>01 45 50 60 70</p>
+        <a href="#rdv">Prendre RDV</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Maison Auréa — Tous droits réservés</span>
+      <span class="footer-credit">
+        <svg width="16" height="16" viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="74" height="74" rx="14" fill="#1A2B4A"/><g transform="translate(37,37)"><path d="M 0 -22 L 3 -3 L 0 0 L -3 -3 Z" fill="#FFFFFF"/><path d="M 0 22 L 3 3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M -22 0 L -3 -3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M 22 0 L 3 -3 L 0 0 L 3 3 Z" fill="#FF6B5B"/><circle cx="0" cy="0" r="2.5" fill="#FFFFFF"/></g></svg>
+        Site créé par <a href="https://ijgenesys.github.io/ijgenesys2/" style="color:#B57F5B;">IJ Genesys</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
