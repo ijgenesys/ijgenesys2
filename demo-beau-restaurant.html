@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beau — Restaurant Paris</title>
+<meta name="description" content="Beau. Le fast-food réinventé. Smash burgers, nuggets au caviar et créations d'exception au cœur de Paris, rue Marbeuf.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A1A1A'/%3E%3Ctext x='16' y='23' font-family='Georgia' font-style='italic' font-size='20' fill='%23F2EEE6' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --creme: #F2EEE6; --creme-2: #EAE4D8; --blanc: #FCFAF6;
+    --noir: #1A1A1A; --noir-soft: #3A3733;
+    --or: #B8995A; --or-clair: #CDB37E;
+    --gris: #8C8579;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; color: var(--noir); background: var(--creme); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; font-weight: 300; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 500; line-height: 1.08; }
+  a { text-decoration: none; color: inherit; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .demo-banner { background: linear-gradient(90deg, #1A2B4A, #FF6B5B); color: #fff; text-align: center; padding: 9px 16px; font-size: 13px; font-weight: 400; font-family: 'Jost', sans-serif; }
+  .demo-banner strong { font-weight: 500; }
+
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity 1.1s cubic-bezier(.16,1,.3,1), transform 1.1s cubic-bezier(.16,1,.3,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* Nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 26px 0; transition: all .5s; }
+  nav.scrolled { background: rgba(242,238,230,0.94); backdrop-filter: blur(14px); padding: 16px 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 600; font-style: italic; color: var(--noir); letter-spacing: 0.02em; }
+  .nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--noir); transition: color .25s; font-weight: 400; }
+  .nav-links a:hover { color: var(--or); }
+  .nav-cta { border: 1px solid var(--noir); padding: 12px 26px; border-radius: 0; transition: all .3s; }
+  .nav-cta:hover { background: var(--noir); color: var(--creme) !important; }
+  .burger-btn { display: none; background: none; border: none; cursor: pointer; font-size: 24px; color: var(--noir); }
+
+  /* Hero */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 40px 60px; position: relative; }
+  .hero-eyebrow { font-size: 13px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--or); margin-bottom: 36px; font-family: 'Jost', sans-serif; }
+  .hero h1 { font-size: clamp(90px, 20vw, 260px); font-weight: 500; font-style: italic; color: var(--noir); line-height: 0.85; margin-bottom: 30px; }
+  .hero .tagline { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 3vw, 30px); font-style: italic; color: var(--noir-soft); margin-bottom: 12px; }
+  .hero .tagline-ar { font-size: 16px; color: var(--gris); margin-bottom: 44px; }
+  .hero-btns { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; }
+  .btn { display: inline-block; padding: 17px 40px; font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 400; cursor: pointer; transition: all .3s; border: 1px solid var(--noir); font-family: 'Jost', sans-serif; }
+  .btn-dark { background: var(--noir); color: var(--creme); }
+  .btn-dark:hover { background: transparent; color: var(--noir); }
+  .btn-light { background: transparent; color: var(--noir); }
+  .btn-light:hover { background: var(--noir); color: var(--creme); }
+  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gris); animation: bob 2.6s ease-in-out infinite; font-family: 'Jost', sans-serif; }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+
+  section { padding: 130px 0; position: relative; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--or); margin-bottom: 22px; font-family: 'Jost', sans-serif; }
+  .section-title { font-size: clamp(48px, 7vw, 90px); color: var(--noir); margin-bottom: 26px; font-style: italic; }
+  .section-lead { font-size: 18px; color: var(--noir-soft); max-width: 540px; font-weight: 300; }
+
+  /* Manifeste */
+  .manifeste { text-align: center; background: var(--creme); }
+  .manifeste .big { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 50px); font-style: italic; color: var(--noir); max-width: 920px; margin: 0 auto; line-height: 1.3; }
+  .manifeste .big span { color: var(--or); }
+
+  /* Signatures */
+  .signatures { background: var(--blanc); }
+  .sig-header { text-align: center; margin-bottom: 80px; }
+  .sig-header .section-lead { margin: 0 auto; }
+  .sig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 40px; }
+  .sig-card { text-align: center; }
+  .sig-card .img-wrap { background: var(--creme); overflow: hidden; margin-bottom: 24px; aspect-ratio: 3/4; }
+  .sig-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16,1,.3,1); }
+  .sig-card:hover img { transform: scale(1.05); }
+  .sig-card h3 { font-size: 30px; color: var(--noir); margin-bottom: 6px; }
+  .sig-card .desc { font-size: 14px; color: var(--gris); margin-bottom: 12px; min-height: 40px; }
+  .sig-card .price { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--or); }
+  .sig-card .tag { display: inline-block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); border: 1px solid var(--or); padding: 4px 12px; margin-bottom: 12px; }
+
+  /* Signature caviar (mise en avant) */
+  .caviar { background: var(--noir); color: var(--creme); }
+  .caviar-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .caviar-img { overflow: hidden; }
+  .caviar-img img { width: 100%; height: 640px; object-fit: cover; }
+  .caviar .eyebrow { color: var(--or-clair); }
+  .caviar h2 { color: var(--creme); }
+  .caviar p { color: rgba(242,238,230,0.7); margin-bottom: 20px; font-size: 16px; }
+  .caviar .price-big { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--or-clair); font-style: italic; }
+  .caviar .quote-fr { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 26px; color: var(--creme); margin: 24px 0; }
+
+  /* Sides */
+  .sides { background: var(--creme); }
+  .sides-header { text-align: center; margin-bottom: 70px; }
+  .sides-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+  .side-card { text-align: center; }
+  .side-card .img-wrap { background: var(--blanc); overflow: hidden; margin-bottom: 18px; aspect-ratio: 3/4; }
+  .side-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s; }
+  .side-card:hover img { transform: scale(1.05); }
+  .side-card h3 { font-size: 24px; color: var(--noir); margin-bottom: 4px; }
+  .side-card .price { font-family: 'Cormorant Garamond', serif; font-size: 19px; color: var(--or); }
+
+  /* Petit meal */
+  .meal { background: var(--creme-2); }
+  .meal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .meal-img { overflow: hidden; }
+  .meal-img img { width: 100%; height: 600px; object-fit: cover; }
+  .meal h2 { font-style: italic; }
+  .meal p { color: var(--noir-soft); margin-bottom: 18px; font-size: 16px; }
+
+  /* Milkshake / douceurs */
+  .douceurs { background: var(--blanc); }
+  .douceurs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .douceurs-img { overflow: hidden; }
+  .douceurs-img img { width: 100%; height: 560px; object-fit: cover; }
+
+  /* Commande */
+  .commande { background: var(--noir); color: var(--creme); text-align: center; }
+  .commande h2 { color: var(--creme); font-style: italic; }
+  .commande p { color: rgba(242,238,230,0.7); max-width: 520px; margin: 0 auto 38px; font-size: 17px; }
+  .commande .btn-or { background: var(--or); border-color: var(--or); color: var(--noir); }
+  .commande .btn-or:hover { background: transparent; color: var(--or-clair); }
+  .commande-row { display: flex; gap: 60px; justify-content: center; margin-top: 56px; flex-wrap: wrap; }
+  .cr .n { font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--or-clair); font-style: italic; }
+  .cr .l { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(242,238,230,0.55); font-family: 'Jost', sans-serif; }
+
+  /* Avis */
+  .avis { background: var(--creme); text-align: center; }
+  .avis-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,4vw,48px); font-style: italic; color: var(--noir); max-width: 920px; margin: 40px auto 26px; line-height: 1.3; }
+  .avis-stars { color: var(--or); font-size: 18px; letter-spacing: 5px; }
+  .avis-author { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gris); margin-top: 16px; font-family: 'Jost', sans-serif; }
+
+  /* Infos */
+  .infos { background: var(--blanc); }
+  .infos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+  .infos-list { list-style: none; }
+  .infos-list li { padding: 24px 0; border-bottom: 1px solid var(--creme-2); }
+  .infos-list .lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--or); margin-bottom: 6px; font-family: 'Jost', sans-serif; }
+  .infos-list .val { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--noir); }
+  .infos-map { overflow: hidden; height: 480px; }
+  .infos-map iframe { width: 100%; height: 100%; border: 0; filter: grayscale(1) contrast(1.05); }
+
+  footer { background: var(--noir); color: rgba(242,238,230,0.6); padding: 90px 0 36px; text-align: center; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-style: italic; color: var(--creme); margin-bottom: 18px; }
+  .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 20px; color: var(--or-clair); margin-bottom: 40px; }
+  .footer-links { display: flex; gap: 36px; justify-content: center; margin-bottom: 48px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(242,238,230,0.7); font-family: 'Jost', sans-serif; }
+  .footer-links a:hover { color: var(--or-clair); }
+  .footer-bottom { border-top: 1px solid rgba(242,238,230,0.12); padding-top: 30px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 12px; color: rgba(242,238,230,0.4); font-family: 'Jost', sans-serif; }
+  .footer-credit { display: flex; align-items: center; gap: 7px; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; } .burger-btn { display: block; }
+    .container { padding: 0 24px; }
+    .caviar-grid, .meal-grid, .douceurs-grid, .infos-grid { grid-template-columns: 1fr; gap: 40px; }
+    .carte-complete .container > div[style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .caviar-img img, .meal-img img, .douceurs-img img { height: 420px; }
+    .sig-grid { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+    .sides-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .commande-row { gap: 36px; }
+    section { padding: 80px 0; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+  @media (max-width: 520px) {
+    .sig-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-banner"><strong>DÉMO · SITE BEAU RESTAURANT</strong> — Maquette créée par IJ Genesys avec vos vraies photos</div>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">Beau</a>
+    <ul class="nav-links">
+      <li><a href="#signatures">La carte</a></li>
+      <li><a href="#caviar">Le Caviar</a></li>
+      <li><a href="#meal">Le Petit Meal</a></li>
+      <li><a href="#infos">Nous trouver</a></li>
+      <li><a href="#commande" class="nav-cta">Commander</a></li>
+    </ul>
+    <button class="burger-btn" aria-label="Menu" onclick="var n=document.querySelector('.nav-links');n.style.display=n.style.display==='flex'?'none':'flex';n.style.flexDirection='column';n.style.gap='18px';">☰</button>
+  </div>
+</nav>
+
+<header class="hero">
+  <p class="hero-eyebrow">Restaurant · Paris 8ᵉ</p>
+  <h1>Beau</h1>
+  <p class="tagline">L'amour triomphe toujours.</p>
+  <p class="tagline-ar">الحب دائما يفوز</p>
+  <div class="hero-btns">
+    <a href="#commande" class="btn btn-dark">Commander en ligne</a>
+    <a href="#signatures" class="btn btn-light">Découvrir la carte</a>
+  </div>
+  <div class="scroll-hint">Défiler</div>
+</header>
+
+<section class="manifeste">
+  <div class="container reveal">
+    <p class="eyebrow">Notre vision</p>
+    <p class="big">Le fast-food, <span>réinventé</span>. Des produits frais, un savoir-faire d'exception, et l'audace de mettre du <span>caviar</span> dans une box. À Paris, rue Marbeuf.</p>
+  </div>
+</section>
+
+<section class="signatures" id="signatures">
+  <div class="container">
+    <div class="sig-header reveal">
+      <p class="eyebrow">La carte</p>
+      <h2 class="section-title">Nos signatures</h2>
+      <p class="section-lead">Des smash burgers à la viande grillée minute, du poulet croustillant, et des créations qui sortent du cadre.</p>
+    </div>
+    <div class="sig-grid reveal">
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/truffle-burger.jpg" alt="Truffle"></div>
+        <span class="tag">Signature</span>
+        <h3>Truffle</h3>
+        <p class="desc">Double smash, cheddar fondant, oignons confits, sauce truffe</p>
+        <div class="price">18 €</div>
+      </div>
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/grand-chicken.jpg" alt="Grand Chicken"></div>
+        <h3>Grand Chicken</h3>
+        <p class="desc">Poulet pané croustillant, cheddar, salade, sauce maison</p>
+        <div class="price">12 €</div>
+      </div>
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/spicy-grand-chicken.jpg" alt="Spicy Grand Chicken"></div>
+        <h3>Spicy Grand Chicken</h3>
+        <p class="desc">Poulet pané épicé, cheddar, salade, sauce relevée</p>
+        <div class="price">12 €</div>
+      </div>
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/chicken-tenders.jpg" alt="Chicken Tenders"></div>
+        <h3>Chicken Tenders</h3>
+        <p class="desc">Tenders panés maison, parmesan, sauce au choix</p>
+        <div class="price">8 €</div>
+      </div>
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/salad-mademoiselle.jpg" alt="Salad Mademoiselle"></div>
+        <h3>Salad Mademoiselle</h3>
+        <p class="desc">Sucrine, parmesan, ciboulette, sauce crémeuse</p>
+        <div class="price">à la carte</div>
+      </div>
+      <div class="sig-card">
+        <div class="img-wrap"><img src="assets/beau/caviar-nuggets.jpg" alt="Nuggets Caviar"></div>
+        <span class="tag">L'exception · dès 19h</span>
+        <h3>Nuggets Caviar</h3>
+        <p class="desc">Nuggets croustillants, caviar Kaviari, crème, ciboulette</p>
+        <div class="price">75 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="caviar" id="caviar">
+  <div class="container">
+    <div class="caviar-grid">
+      <div class="caviar-img reveal"><img src="assets/beau/caviar-nuggets.jpg" alt="Nuggets au caviar"></div>
+      <div class="reveal">
+        <p class="eyebrow">La pièce maîtresse</p>
+        <h2 class="section-title">Caviar &amp; Nuggets</h2>
+        <p>Notre création signature, celle qui fait parler tout Paris : des nuggets de poulet croustillants, servis avec du caviar Kaviari, une crème fraîche et de la ciboulette ciselée. Disponible à partir de 19h.</p>
+        <p>L'alliance improbable du réconfort et du raffinement. Le luxe, sans la cravate.</p>
+        <p class="quote-fr">« L'amour triomphe toujours. »</p>
+        <div class="price-big">Nuggets Caviar — 75 € · Caviar 30g/100g — 55 € / 180 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sides" id="sides">
+  <div class="container">
+    <div class="sides-header reveal">
+      <p class="eyebrow">Les à-côtés</p>
+      <h2 class="section-title">Sides &amp; sauces</h2>
+    </div>
+    <div class="sides-grid reveal">
+      <div class="side-card">
+        <div class="img-wrap"><img src="assets/beau/smash-truffle-potatoes.jpg" alt="Smash Truffle Potatoes"></div>
+        <h3>Smash Truffle Potatoes</h3>
+        <div class="price">Truffe</div>
+      </div>
+      <div class="side-card">
+        <div class="img-wrap"><img src="assets/beau/smash-potatoes.jpg" alt="Smash Potatoes"></div>
+        <h3>Smash Potatoes</h3>
+        <div class="price">6 €</div>
+      </div>
+      <div class="side-card">
+        <div class="img-wrap"><img src="assets/beau/french-fries.jpg" alt="French Fries"></div>
+        <h3>French Fries</h3>
+        <div class="price">5 €</div>
+      </div>
+      <div class="side-card">
+        <div class="img-wrap"><img src="assets/beau/truffle-sauce.jpg" alt="Truffle Sauce"></div>
+        <h3>Sauces maison</h3>
+        <div class="price">2 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="meal" id="meal">
+  <div class="container">
+    <div class="meal-grid">
+      <div class="reveal">
+        <p class="eyebrow">Pour les petits & les collectionneurs</p>
+        <h2 class="section-title">Le Petit Meal</h2>
+        <p>Un menu burger ou tenders, des frites, une boisson — et une surprise collector glissée dans la box.</p>
+        <p>Parce qu'on peut être un restaurant sérieux et garder une âme d'enfant. C'est aussi ça, Beau.</p>
+        <a href="#commande" class="btn btn-light" style="margin-top:14px;">Commander le Petit Meal</a>
+      </div>
+      <div class="meal-img reveal"><img src="assets/beau/petit-meal.jpg" alt="Le Petit Meal"></div>
+    </div>
+  </div>
+</section>
+
+<section class="douceurs">
+  <div class="container">
+    <div class="douceurs-grid">
+      <div class="douceurs-img reveal"><img src="assets/beau/milkshake-madeleine.jpg" alt="Milkshake Madeleine"></div>
+      <div class="reveal">
+        <p class="eyebrow">La douceur</p>
+        <h2 class="section-title">Milkshake Madeleine</h2>
+        <p style="color:var(--noir-soft);margin-bottom:18px;font-size:16px;">Un milkshake onctueux au goût de madeleine, caramel coulant et chantilly maison. Le dessert qui réveille des souvenirs d'enfance, version Beau.</p>
+        <div class="price" style="font-family:'Cormorant Garamond',serif;font-size:24px;color:var(--or);">8 €</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carte-complete" id="carte" style="background:var(--noir);color:var(--creme);">
+  <div class="container reveal">
+    <div style="text-align:center;margin-bottom:70px;">
+      <p class="eyebrow" style="color:var(--or-clair);">Le menu</p>
+      <h2 class="section-title" style="color:var(--creme);">La carte</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px;max-width:1100px;margin:0 auto;">
+
+      <div>
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Burgers</h3>
+        <ul style="list-style:none;font-family:'Jost',sans-serif;font-size:15px;">
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Double Cheese</span><span>12 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Original</span><span>12 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Jalapeños</span><span>12 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Truffle</span><span>18 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Smash Toast</span><span>10 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Grand Chicken</span><span>12 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Spicy Grand Chicken</span><span>12 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Veggie</span><span>18 €</span></li>
+        </ul>
+
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin:36px 0 24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Sides</h3>
+        <ul style="list-style:none;font-family:'Jost',sans-serif;font-size:15px;">
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>French Fries</span><span>5 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Smash Potatoes</span><span>6 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Chicken Tenders</span><span>8 €</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Caviar</h3>
+        <ul style="list-style:none;font-family:'Jost',sans-serif;font-size:15px;">
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Chicken Nuggets <em style="color:var(--gris);font-size:12px;">dès 19h</em></span><span>75 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Caviar 30g / 100g</span><span>55 / 180 €</span></li>
+        </ul>
+
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin:36px 0 24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Sauces</h3>
+        <p style="font-family:'Jost',sans-serif;font-size:15px;color:rgba(242,238,230,0.85);line-height:1.9;">Classic · Creamy Herb · Truffle · Honey Mustard · Spicy Truffle<br><span style="color:var(--or-clair);">2 € la sauce</span></p>
+      </div>
+
+      <div>
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin-bottom:24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Desserts</h3>
+        <ul style="list-style:none;font-family:'Jost',sans-serif;font-size:15px;">
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Milkshake Madeleine</span><span>8 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Sundae Salted Caramel</span><span>6 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Smash Toast Nutella</span><span>5 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Madeleine Vanille &amp; Charbon</span><span>5 €</span></li>
+        </ul>
+
+        <h3 style="font-size:26px;color:var(--or-clair);font-style:italic;margin:36px 0 24px;border-bottom:1px solid rgba(242,238,230,0.18);padding-bottom:12px;">Drinks</h3>
+        <ul style="list-style:none;font-family:'Jost',sans-serif;font-size:15px;">
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Passion Fruit Lemonade</span><span>5 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Coke · Coke Zero · Ginger Beer</span><span>4 €</span></li>
+          <li style="display:flex;justify-content:space-between;padding:9px 0;color:rgba(242,238,230,0.85);"><span>Evian · Perrier</span><span>4 €</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="commande" id="commande">
+  <div class="container reveal">
+    <p class="eyebrow" style="color:var(--or-clair);">Commande en ligne</p>
+    <h2 class="section-title">Commandez en direct</h2>
+    <p>Click &amp; collect en quelques clics. Récupérez votre commande sans attente — et sans commission de plateforme. 100% pour Beau, 100% pour vous.</p>
+    <a href="#" class="btn btn-or">Commander maintenant</a>
+    <div class="commande-row">
+      <div class="cr"><div class="n">0%</div><div class="l">de commission</div></div>
+      <div class="cr"><div class="n">2 min</div><div class="l">pour commander</div></div>
+      <div class="cr"><div class="n">Marbeuf</div><div class="l">Paris 8ᵉ</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="avis">
+  <div class="container reveal">
+    <p class="eyebrow">Ils en parlent</p>
+    <p class="avis-quote">« Enfin un beau restaurant à Paris ! Les smash burgers sont excellents, et les nuggets au caviar valent vraiment le détour. »</p>
+    <div class="avis-stars">★★★★★</div>
+    <p class="avis-author">Avis Google · 4,7/5 · Rue Marbeuf</p>
+  </div>
+</section>
+
+<section class="infos" id="infos">
+  <div class="container">
+    <div class="infos-grid">
+      <div class="reveal">
+        <p class="eyebrow">Nous trouver</p>
+        <h2 class="section-title">Beau, rue Marbeuf</h2>
+        <ul class="infos-list">
+          <li><div class="lbl">Adresse</div><div class="val">18 rue Marbeuf, 75008 Paris</div></li>
+          <li><div class="lbl">Horaires</div><div class="val">7j/7 · jusqu'à 23h00</div></li>
+          <li><div class="lbl">Réservation</div><div class="val">Sans réservation · Premier arrivé, premier servi</div></li>
+          <li><div class="lbl">Téléphone</div><div class="val">07 59 74 82 35</div></li>
+          <li><div class="lbl">Instagram</div><div class="val">@beaurestaurants</div></li>
+        </ul>
+      </div>
+      <div class="infos-map reveal">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=2.3000%2C48.8680%2C2.3120%2C48.8720&layer=mapnik" title="Plan d'accès Beau" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">Beau</div>
+    <p class="footer-tagline">L'amour triomphe toujours.</p>
+    <div class="footer-links">
+      <a href="#signatures">La carte</a>
+      <a href="#caviar">Le Caviar</a>
+      <a href="#meal">Le Petit Meal</a>
+      <a href="#commande">Commander</a>
+      <a href="#infos">Nous trouver</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Beau Restaurant — 18 rue Marbeuf, 75008 Paris</span>
+      <span class="footer-credit">
+        <svg width="16" height="16" viewBox="0 0 74 74" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="74" height="74" rx="14" fill="#1A2B4A"/><g transform="translate(37,37)"><path d="M 0 -22 L 3 -3 L 0 0 L -3 -3 Z" fill="#FFFFFF"/><path d="M 0 22 L 3 3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M -22 0 L -3 -3 L 0 0 L -3 3 Z" fill="#FFFFFF"/><path d="M 22 0 L 3 -3 L 0 0 L 3 3 Z" fill="#FF6B5B"/><circle cx="0" cy="0" r="2.5" fill="#FFFFFF"/></g></svg>
+        Site créé par <a href="https://ijgenesys.github.io/ijgenesys2/" style="color:var(--or-clair);">IJ Genesys</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+</script>
+
+</body>
+</html>
