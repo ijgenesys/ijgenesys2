@@ -1309,6 +1309,13 @@ section { padding: 100px 0; position: relative; }
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Calculateur ROI - grilles responsive */
+.roi-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+.roi-grid-2 { grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) {
+  .roi-grid-3, .roi-grid-2 { grid-template-columns: 1fr !important; }
+}
 </style>
 </head>
 <body>
@@ -1524,7 +1531,7 @@ section { padding: 100px 0; position: relative; }
     </div>
 
     <!-- 3 chiffres clés -->
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-bottom:70px;">
+    <div class="roi-grid-3" style="display:grid; gap:24px; margin-bottom:70px;">
       <div style="text-align:center; padding:32px 20px; background:rgba(255,255,255,0.05); border-radius:16px;">
         <div style="font-size:46px; font-weight:800; color:var(--corail); line-height:1;">78%</div>
         <p style="font-size:14px; color:rgba(255,255,255,0.7); margin-top:12px;">des clients cherchent un commerce sur Google avant de s'y rendre</p>
@@ -1544,42 +1551,46 @@ section { padding: 100px 0; position: relative; }
       <h3 style="font-size:28px; text-align:center; margin-bottom:8px;">💰 Combien votre site peut vous rapporter ?</h3>
       <p style="text-align:center; color:#5A5A6E; font-size:15px; margin-bottom:36px;">Faites le calcul avec vos propres chiffres.</p>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:36px;">
+      <div class="roi-grid-2" style="display:grid; gap:28px; margin-bottom:36px;">
         <div>
           <label style="display:block; font-weight:600; margin-bottom:10px; font-size:14px;">Votre panier moyen par client (€)</label>
-          <input type="number" id="roi-panier" value="55" min="1" style="width:100%; padding:14px 16px; border:2px solid #E3E8ED; border-radius:10px; font-size:16px; font-family:inherit;">
+          <input type="number" id="roi-panier" value="60" min="1" style="width:100%; padding:14px 16px; border:2px solid #E3E8ED; border-radius:10px; font-size:16px; font-family:inherit;">
           <p style="font-size:12px; color:#999; margin-top:6px;">Ex : coupe+couleur 55€, couvert resto 35€, dépannage 200€</p>
         </div>
         <div>
-          <label style="display:block; font-weight:600; margin-bottom:10px; font-size:14px;">Nouveaux clients/mois grâce au site</label>
-          <input type="number" id="roi-clients" value="4" min="1" style="width:100%; padding:14px 16px; border:2px solid #E3E8ED; border-radius:10px; font-size:16px; font-family:inherit;">
-          <p style="font-size:12px; color:#999; margin-top:6px;">Estimation prudente : 2 à 6 nouveaux clients/mois</p>
+          <label style="display:block; font-weight:600; margin-bottom:10px; font-size:14px;">Nouveaux clients/mois (estimation de base)</label>
+          <input type="number" id="roi-clients" value="6" min="1" style="width:100%; padding:14px 16px; border:2px solid #E3E8ED; border-radius:10px; font-size:16px; font-family:inherit;">
+          <p style="font-size:12px; color:#999; margin-top:6px;">Les formules supérieures convertissent +50% à +100% (animations, SEO, réservation en ligne)</p>
         </div>
       </div>
 
       <div style="margin-bottom:36px;">
         <label style="display:block; font-weight:600; margin-bottom:12px; font-size:14px;">Votre formule</label>
         <div style="display:flex; gap:12px; flex-wrap:wrap;" id="roi-formules">
-          <button type="button" class="roi-formule" data-prix="1490" onclick="selectFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid #E3E8ED; border-radius:10px; background:#fff; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Essentielle<br><span style="color:var(--corail);">1490 €</span></button>
-          <button type="button" class="roi-formule roi-active" data-prix="2490" onclick="selectFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid var(--corail); border-radius:10px; background:var(--corail-pale); cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Signature<br><span style="color:var(--corail);">2490 €</span></button>
-          <button type="button" class="roi-formule" data-prix="3990" onclick="selectFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid #E3E8ED; border-radius:10px; background:#fff; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Excellence<br><span style="color:var(--corail);">3990 €</span></button>
+          <button type="button" class="roi-formule" data-prix="1490" data-mult="1" onclick="selectROIFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid #E3E8ED; border-radius:10px; background:#fff; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Essentielle<br><span style="color:var(--corail);">1490 €</span></button>
+          <button type="button" class="roi-formule roi-active" data-prix="2490" data-mult="1.5" onclick="selectROIFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid var(--corail); border-radius:10px; background:var(--corail-pale); cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Signature<br><span style="color:var(--corail);">2490 €</span></button>
+          <button type="button" class="roi-formule" data-prix="3990" data-mult="2" onclick="selectROIFormule(this)" style="flex:1; min-width:140px; padding:14px; border:2px solid #E3E8ED; border-radius:10px; background:#fff; cursor:pointer; font-family:inherit; font-size:14px; font-weight:600;">Excellence<br><span style="color:var(--corail);">3990 €</span></button>
         </div>
       </div>
 
       <!-- Résultats -->
       <div style="background:var(--bleu-nuit); border-radius:16px; padding:36px; text-align:center; color:#fff;">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div class="roi-grid-3" style="display:grid; gap:20px;">
           <div>
-            <p style="font-size:13px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Revenu généré / an</p>
-            <div id="roi-revenu" style="font-size:42px; font-weight:800; color:#4ADE80;">2 640 €</div>
+            <p style="font-size:12px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Revenu / an</p>
+            <div id="roi-revenu" style="font-size:34px; font-weight:800; color:#4ADE80;">4 320 €</div>
           </div>
           <div>
-            <p style="font-size:13px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Site remboursé en</p>
-            <div id="roi-mois" style="font-size:42px; font-weight:800; color:var(--corail);">11 mois</div>
+            <p style="font-size:12px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Site remboursé en</p>
+            <div id="roi-mois" style="font-size:34px; font-weight:800; color:var(--corail);">7 mois</div>
+          </div>
+          <div>
+            <p style="font-size:12px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:8px;">Bénéfice / 3 ans</p>
+            <div id="roi-3ans" style="font-size:34px; font-weight:800; color:#4ADE80;">10 470 €</div>
           </div>
         </div>
         <p id="roi-message" style="margin-top:28px; font-size:16px; color:rgba(255,255,255,0.9); padding-top:24px; border-top:1px solid rgba(255,255,255,0.15);">
-          Au bout d'1 an, votre site vous aura déjà rapporté <strong style="color:#4ADE80;">150 €</strong> de plus qu'il ne vous a coûté. Et ça continue chaque année !
+          Dès l'année 2, vous gagnez <strong style="color:#4ADE80;">4 320 €/an</strong> de bénéfice net. Le site est déjà payé !
         </p>
       </div>
 
@@ -1595,7 +1606,7 @@ section { padding: 100px 0; position: relative; }
 </section>
 
 <script>
-  function selectFormule(btn) {
+  function selectROIFormule(btn) {
     document.querySelectorAll('.roi-formule').forEach(function(b) {
       b.style.border = '2px solid #E3E8ED';
       b.style.background = '#fff';
@@ -1608,23 +1619,28 @@ section { padding: 100px 0; position: relative; }
   }
   function calculerROI() {
     var panier = parseFloat(document.getElementById('roi-panier').value) || 0;
-    var clients = parseFloat(document.getElementById('roi-clients').value) || 0;
+    var clientsBase = parseFloat(document.getElementById('roi-clients').value) || 0;
     var active = document.querySelector('.roi-formule.roi-active');
     var prix = active ? parseFloat(active.getAttribute('data-prix')) : 2490;
+    var mult = active ? parseFloat(active.getAttribute('data-mult')) : 1.5;
 
+    var clients = clientsBase * mult;
     var revenuMois = panier * clients;
     var revenuAn = revenuMois * 12;
     var mois = revenuMois > 0 ? Math.ceil(prix / revenuMois) : 0;
-    var benefAn1 = revenuAn - prix;
+    var benefice3ans = (revenuAn * 3) - prix;
 
     document.getElementById('roi-revenu').textContent = revenuAn.toLocaleString('fr-FR') + ' €';
-    document.getElementById('roi-mois').textContent = (mois > 0 ? mois + (mois > 1 ? ' mois' : ' mois') : '—');
+    document.getElementById('roi-mois').textContent = (mois > 0 ? mois + ' mois' : '—');
+    document.getElementById('roi-3ans').textContent = benefice3ans.toLocaleString('fr-FR') + ' €';
 
     var msg = document.getElementById('roi-message');
-    if (benefAn1 >= 0) {
-      msg.innerHTML = "Au bout d'1 an, votre site vous aura déjà rapporté <strong style='color:#4ADE80;'>" + benefAn1.toLocaleString('fr-FR') + " €</strong> de plus qu'il ne vous a coûté. Et ça continue chaque année !";
+    if (mois > 0 && mois <= 12) {
+      msg.innerHTML = "Dès l'année 2, vous gagnez <strong style='color:#4ADE80;'>" + revenuAn.toLocaleString('fr-FR') + " €/an</strong> de bénéfice net. Le site est déjà payé !";
+    } else if (mois > 0) {
+      msg.innerHTML = "Votre site est remboursé en <strong style='color:#FF6B5B;'>" + mois + " mois</strong>, puis tout devient bénéfice net : <strong style='color:#4ADE80;'>" + revenuAn.toLocaleString('fr-FR') + " €/an</strong>.";
     } else {
-      msg.innerHTML = "Votre site sera remboursé en <strong style='color:#FF6B5B;'>" + mois + " mois</strong>, puis chaque nouveau client devient du bénéfice net.";
+      msg.innerHTML = "Entrez vos chiffres pour voir combien votre site peut vous rapporter.";
     }
   }
   document.getElementById('roi-panier').addEventListener('input', calculerROI);
