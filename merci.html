@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merci — IJ Genesys</title>
+<meta name="description" content="Votre demande a bien été reçue. Nous revenons vers vous sous 24h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  background: #1A2B4A;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+body::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: rgba(255,107,91,0.08);
+}
+body::after {
+  content: '';
+  position: absolute;
+  bottom: -250px;
+  left: -250px;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: rgba(255,107,91,0.05);
+}
+.container {
+  max-width: 720px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+.logo-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 60px;
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+}
+.logo-row svg { width: 40px; height: 40px; }
+.logo-row span b { color: #FF6B5B; }
+.check {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #FF6B5B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 40px;
+  animation: pop 0.6s ease-out;
+}
+.check svg { width: 70px; height: 70px; stroke: #1A2B4A; stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes pop {
+  0% { transform: scale(0); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 0.3em;
+  color: #FF6B5B;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+h1 {
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 30px;
+}
+h1 em { font-style: italic; color: #FF6B5B; }
+.intro {
+  font-size: 22px;
+  opacity: 0.85;
+  line-height: 1.5;
+  margin-bottom: 50px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.steps {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 36px;
+  border-radius: 16px;
+  margin-bottom: 50px;
+  text-align: left;
+}
+.steps h3 {
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: #FF6B5B;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+}
+.step {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+.step:last-child { margin-bottom: 0; }
+.step-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #FF6B5B;
+  color: #1A2B4A;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.step-text {
+  font-size: 17px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+.step-text b { font-weight: 700; color: #fff; }
+.cta-row {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn {
+  display: inline-block;
+  padding: 18px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: #FF6B5B;
+  color: #1A2B4A;
+}
+.btn-primary:hover { transform: translateY(-2px); background: #ff5443; }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1.5px solid rgba(255,255,255,0.3);
+}
+.btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
+@media (max-width: 700px) {
+  .container { padding: 20px; }
+  h1 { font-size: 56px; }
+  .intro { font-size: 18px; }
+  .check { width: 100px; height: 100px; }
+  .check svg { width: 50px; height: 50px; }
+  .steps { padding: 24px; }
+  .cta-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  
+  <div class="logo-row">
+    <svg viewBox="0 0 74 74"><rect width="74" height="74" rx="14" fill="#FF6B5B"/><g transform="translate(37,37)"><path d="M 0 -22 L 3 -3 L 0 0 L -3 -3 Z" fill="#fff"/><path d="M 0 22 L 3 3 L 0 0 L -3 3 Z" fill="#fff"/><path d="M -22 0 L -3 -3 L 0 0 L -3 3 Z" fill="#fff"/><path d="M 22 0 L 3 -3 L 0 0 L 3 3 Z" fill="#1A2B4A"/></g></svg>
+    <span>IJ <b>GENESYS</b></span>
+  </div>
+  
+  <div class="check">
+    <svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+  </div>
+  
+  <div class="eyebrow">// DEMANDE REÇUE</div>
+  
+  <h1>Merci !<br>On vous <em>recontacte.</em></h1>
+  
+  <p class="intro">Votre demande de devis vient d'arriver dans notre boîte. Nous l'examinons attentivement.</p>
+  
+  <div class="steps">
+    <h3>// Ce qui se passe maintenant</h3>
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">On lit votre demande dans les <b>24h ouvrées</b>.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">On vous renvoie un <b>devis personnalisé</b> par email (avec quelques questions si besoin).</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">Si tout vous convient, on planifie un <b>brief de 30 min</b> et on démarre. Mise en ligne en 2 semaines.</div>
+    </div>
+  </div>
+  
+  <div class="cta-row">
+    <a href="/ijgenesys2/" class="btn btn-primary">Retour au site</a>
+    <a href="https://www.instagram.com/ijgenesys" class="btn btn-outline">Suivre sur Instagram</a>
+  </div>
+  
+</div>
+
+</body>
+</html>
