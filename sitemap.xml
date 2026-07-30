@@ -1,116 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- PAGES PRINCIPALES -->
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/</loc>
-    <lastmod>2026-05-13</lastmod>
+    <loc>https://ijgenesys.fr/</loc>
+    <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- DÉMOS UNIVERSELLES (Studio Capillaire) -->
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-essentielle.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-signature.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-excellence.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  
-  <!-- DÉMOS PERSONNALISÉES En Vogue -->
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-envogue-essentielle.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-envogue-signature.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://ijgenesys.fr/site-internet-coiffeur-paris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-envogue-excellence.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- DÉMOS PERSONNALISÉES Michel Dervyn -->
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-michel-dervyn-essentielle.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-michel-dervyn-signature.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://ijgenesys.fr/site-internet-restaurant-paris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/demo-michel-dervyn-excellence.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <!-- PAGES LÉGALES IJ GENESYS -->
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/cgv.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://ijgenesys.fr/site-internet-artisan-paris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/mentions-legales.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://ijgenesys.fr/site-internet-commerce-paris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/politique-confidentialite.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/cookies.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  
-  <!-- PAGES LÉGALES STUDIO CAPILLAIRE (démos) -->
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/mentions-legales-studio.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/politique-confidentialite-studio.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://ijgenesys.github.io/ijgenesys/cookies-studio.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
+    <loc>https://ijgenesys.fr/site-internet-bien-etre-paris.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
