@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Bistro des Augustins — Les gratins du Quai, Paris 6ᵉ</title>
+<meta name="description" content="Le Bistro des Augustins, 39 Quai des Grands Augustins, Paris 6ᵉ. La maison du gratin face à la Seine : gratin de canard, saumon, fromages. Ouvert 7j/7 de 11h30 à 2h. 01 43 54 04 41.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E3A2F">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='13' fill='%231E3A2F'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='26' fill='%23FAF3E7' text-anchor='middle' font-style='italic'%3EBA%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --vert: #1E3A2F;
+  --vert-fonce: #142A21;
+  --vert-clair: #2C5243;
+  --creme: #FAF3E7;
+  --creme-fonce: #F2E7D3;
+  --cuivre: #C08540;
+  --cuivre-clair: #D9A15C;
+  --encre: #17281F;
+  --gris: #6B7A70;
+  --blanc: #FFFFFF;
+  --transition: all .28s cubic-bezier(.4,0,.2,1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--creme);
+  color: var(--encre);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+section { padding: 90px 0; position: relative; }
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11.5px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--cuivre); margin-bottom: 18px;
+}
+.eyebrow::before, .eyebrow--line-after::after { content: ''; width: 34px; height: 1px; background: var(--cuivre); }
+
+h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(30px, 4.2vw, 46px);
+  font-weight: 500; line-height: 1.15; margin-bottom: 16px;
+}
+h2 em { font-style: italic; color: var(--cuivre); }
+.sub { font-size: 16px; color: var(--gris); max-width: 620px; }
+
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 32px; border-radius: 999px;
+  font-size: 14px; font-weight: 700; letter-spacing: .04em;
+  text-decoration: none; cursor: pointer; border: none;
+  font-family: inherit; transition: var(--transition);
+}
+.btn-cuivre { background: var(--cuivre); color: var(--blanc); box-shadow: 0 8px 26px rgba(192,133,64,.35); }
+.btn-cuivre:hover { background: var(--cuivre-clair); transform: translateY(-3px); }
+.btn-ghost { background: transparent; color: var(--creme); border: 1.5px solid rgba(250,243,231,.4); }
+.btn-ghost:hover { border-color: var(--creme); background: rgba(250,243,231,.08); }
+.btn-vert { background: var(--vert); color: var(--creme); }
+.btn-vert:hover { background: var(--vert-clair); transform: translateY(-2px); }
+
+/* ═══════════ NAV ═══════════ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(30,58,47,.92);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  transition: var(--transition);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 18px;
+}
+.nav-logo { display: flex; flex-direction: column; text-decoration: none; line-height: 1.1; }
+.nav-logo-name { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: var(--creme); }
+.nav-logo-sub { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--cuivre-clair); }
+.nav-links { display: flex; gap: 26px; list-style: none; align-items: center; }
+.nav-links a { color: rgba(250,243,231,.85); text-decoration: none; font-size: 13.5px; font-weight: 500; transition: color .15s; }
+.nav-links a:hover { color: var(--cuivre-clair); }
+.nav-tel { color: var(--creme); font-weight: 700; font-size: 13.5px; text-decoration: none; }
+.nav-cta { padding: 11px 22px; font-size: 12.5px; }
+.nav-burger { display: none; background: none; border: none; color: var(--creme); cursor: pointer; padding: 6px; }
+
+/* ═══════════ HERO ═══════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 140px 0 90px;
+  background:
+    radial-gradient(900px 500px at 85% 0%, rgba(192,133,64,.22), transparent 60%),
+    radial-gradient(700px 500px at 0% 100%, rgba(20,42,33,.9), transparent 70%),
+    linear-gradient(160deg, var(--vert) 0%, var(--vert-fonce) 100%);
+  color: var(--creme);
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 18px;
+  border: 1px solid rgba(250,243,231,.14);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid rgba(250,243,231,.3);
+  padding: 8px 18px; border-radius: 999px;
+  font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600;
+  color: var(--cuivre-clair); margin-bottom: 28px;
+}
+.hero h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: clamp(38px, 5.6vw, 66px);
+  font-weight: 500; line-height: 1.08;
+  margin-bottom: 22px;
+}
+.hero h1 em { font-style: italic; color: var(--cuivre-clair); }
+.hero-sub { font-size: 17px; color: rgba(250,243,231,.78); max-width: 480px; margin-bottom: 34px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 38px; }
+.hero-proof { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; }
+.hero-proof-item { display: flex; flex-direction: column; }
+.hero-proof-item strong { font-family: 'Fraunces', serif; font-size: 21px; color: var(--creme); }
+.hero-proof-item span { font-size: 12px; color: rgba(250,243,231,.6); }
+.hero-stars { color: var(--cuivre-clair); letter-spacing: 2px; }
+
+/* Carte "plat du moment" */
+.hero-card {
+  background: var(--creme); color: var(--encre);
+  border-radius: 18px; padding: 34px;
+  box-shadow: 0 30px 70px rgba(0,0,0,.4);
+  position: relative;
+}
+.hero-card::before {
+  content: 'La spécialité';
+  position: absolute; top: -14px; left: 28px;
+  background: var(--cuivre); color: var(--blanc);
+  font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 999px;
+}
+.hero-card h3 { font-family: 'Fraunces', serif; font-size: 27px; font-weight: 600; margin-bottom: 10px; }
+.hero-card > p { font-size: 14.5px; color: var(--gris); margin-bottom: 20px; }
+.hero-card-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 11px 0; border-bottom: 1px dashed var(--creme-fonce);
+  font-size: 14.5px;
+}
+.hero-card-row:last-of-type { border: none; }
+.hero-card-row strong { font-weight: 600; }
+.hero-card-prix { font-family: 'Fraunces', serif; font-weight: 600; color: var(--cuivre); font-size: 16px; }
+
+/* ═══════════ BANDEAU CHIFFRES ═══════════ */
+.chiffres { background: var(--creme); padding: 0; }
+.chiffres-inner {
+  max-width: 1100px; margin: -46px auto 0; padding: 0 24px;
+  position: relative; z-index: 5;
+}
+.chiffres-grid {
+  background: var(--blanc);
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(23,40,31,.12);
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  padding: 30px 20px;
+}
+.chiffre { text-align: center; padding: 6px 14px; border-right: 1px solid var(--creme-fonce); }
+.chiffre:last-child { border: none; }
+.chiffre strong { display: block; font-family: 'Fraunces', serif; font-size: 26px; color: var(--vert); }
+.chiffre span { font-size: 12.5px; color: var(--gris); }
+
+/* ═══════════ HISTOIRE ═══════════ */
+.histoire { background: var(--creme); padding-top: 110px; }
+.histoire-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+.histoire-visuel {
+  aspect-ratio: 4 / 5;
+  border-radius: 16px;
+  background:
+    radial-gradient(300px 200px at 70% 20%, rgba(217,161,92,.5), transparent 60%),
+    linear-gradient(160deg, var(--vert-clair), var(--vert-fonce));
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding: 28px;
+  box-shadow: 0 24px 60px rgba(23,40,31,.2);
+}
+.histoire-visuel::before {
+  content: 'BA';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%);
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 150px; font-weight: 500;
+  color: rgba(250,243,231,.12);
+}
+.histoire-visuel-note {
+  background: rgba(250,243,231,.95); border-radius: 12px; padding: 16px 20px;
+  font-size: 13px; color: var(--encre); width: 100%;
+}
+.histoire-visuel-note strong { display: block; font-family: 'Fraunces', serif; font-size: 15px; margin-bottom: 2px; }
+.histoire-text p { font-size: 15.5px; color: var(--gris); margin-bottom: 16px; }
+.histoire-text p strong { color: var(--encre); }
+.histoire-quote {
+  border-left: 3px solid var(--cuivre);
+  padding-left: 20px; margin-top: 26px;
+  font-family: 'Fraunces', serif; font-style: italic; font-size: 19px; color: var(--vert);
+}
+
+/* ═══════════ LA CARTE ═══════════ */
+.carte { background: var(--vert); color: var(--creme); }
+.carte::before {
+  content: ''; position: absolute; inset: 16px;
+  border: 1px solid rgba(250,243,231,.1); border-radius: 6px; pointer-events: none;
+}
+.carte h2 { color: var(--creme); }
+.carte .sub { color: rgba(250,243,231,.65); }
+.carte-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 30px; }
+.carte-tab {
+  background: transparent; border: 1.5px solid rgba(250,243,231,.28);
+  color: rgba(250,243,231,.85);
+  border-radius: 999px; padding: 10px 22px;
+  font-family: inherit; font-size: 13px; font-weight: 600; letter-spacing: .04em;
+  cursor: pointer; transition: var(--transition);
+}
+.carte-tab:hover { border-color: var(--cuivre-clair); color: var(--cuivre-clair); }
+.carte-tab.active { background: var(--cuivre); border-color: var(--cuivre); color: var(--blanc); }
+.carte-panel { display: none; }
+.carte-panel.active { display: block; }
+.plats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 46px; }
+.plat {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 15px 0; border-bottom: 1px dashed rgba(250,243,231,.16);
+}
+.plat-nom { font-size: 15.5px; font-weight: 600; }
+.plat-nom small { display: block; font-weight: 400; font-size: 12.5px; color: rgba(250,243,231,.55); margin-top: 2px; }
+.plat-prix { font-family: 'Fraunces', serif; font-size: 16px; color: var(--cuivre-clair); white-space: nowrap; }
+.plat-star {
+  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  background: rgba(192,133,64,.25); color: var(--cuivre-clair);
+  border-radius: 999px; padding: 2px 9px; margin-left: 8px; vertical-align: middle;
+}
+.carte-note { margin-top: 30px; font-size: 12.5px; color: rgba(250,243,231,.5); font-style: italic; }
+
+/* ═══════════ GRATINS SIGNATURE ═══════════ */
+.gratins { background: var(--creme); }
+.gratins-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.gratin {
+  background: var(--blanc); border-radius: 16px; padding: 30px 26px;
+  border: 1px solid var(--creme-fonce);
+  transition: var(--transition);
+  position: relative;
+}
+.gratin:hover { transform: translateY(-6px); box-shadow: 0 18px 44px rgba(23,40,31,.12); border-color: var(--cuivre); }
+.gratin-tag {
+  position: absolute; top: -12px; left: 22px;
+  background: var(--vert); color: var(--creme);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  padding: 5px 13px; border-radius: 999px;
+}
+.gratin-tag--star { background: var(--cuivre); color: var(--blanc); }
+.gratin h3 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; margin-bottom: 10px; }
+.gratin p { font-size: 14px; color: var(--gris); }
+
+/* ═══════════ AVIS ═══════════ */
+.avis { background: var(--blanc); }
+.avis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
+.avis-card {
+  background: var(--creme); border-radius: 16px; padding: 30px;
+  display: flex; flex-direction: column;
+}
+.avis-stars { color: var(--cuivre); letter-spacing: 3px; font-size: 15px; margin-bottom: 14px; }
+.avis-card p { font-family: 'Fraunces', serif; font-style: italic; font-size: 15.5px; line-height: 1.6; color: var(--encre); flex-grow: 1; margin-bottom: 18px; }
+.avis-card footer { font-size: 12.5px; color: var(--gris); font-weight: 600; }
+.avis-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.avis-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--creme); border: 1px solid var(--creme-fonce);
+  border-radius: 999px; padding: 12px 24px;
+  font-size: 13.5px; font-weight: 700; color: var(--vert);
+}
+.avis-badge span { color: var(--cuivre); }
+
+/* ═══════════ INFOS PRATIQUES ═══════════ */
+.infos { background: var(--creme); }
+.infos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.info {
+  background: var(--blanc); border-radius: 16px; padding: 30px;
+  border: 1px solid var(--creme-fonce);
+}
+.info-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--vert); color: var(--cuivre-clair);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px;
+}
+.info h3 { font-family: 'Fraunces', serif; font-size: 19px; margin-bottom: 8px; }
+.info p { font-size: 14px; color: var(--gris); }
+.info p strong { color: var(--encre); }
+.info a { color: var(--cuivre); font-weight: 700; text-decoration: none; }
+.infos-conseil {
+  margin-top: 26px;
+  background: rgba(192,133,64,.1); border: 1px solid rgba(192,133,64,.3);
+  border-radius: 14px; padding: 18px 24px;
+  font-size: 14px; color: var(--encre);
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.infos-conseil strong { color: var(--cuivre); }
+
+/* ═══════════ RÉSERVATION ═══════════ */
+.resa { background: var(--vert); color: var(--creme); }
+.resa::before {
+  content: ''; position: absolute; inset: 16px;
+  border: 1px solid rgba(250,243,231,.1); border-radius: 6px; pointer-events: none;
+}
+.resa h2 { color: var(--creme); }
+.resa .sub { color: rgba(250,243,231,.7); margin: 0 auto; }
+.resa-head { text-align: center; max-width: 640px; margin: 0 auto 44px; }
+.resa-head .eyebrow { justify-content: center; }
+.resa-head .eyebrow::after { content: ''; width: 34px; height: 1px; background: var(--cuivre); }
+.resa-box {
+  background: var(--creme); color: var(--encre);
+  border-radius: 18px; padding: 38px;
+  max-width: 680px; margin: 0 auto;
+  box-shadow: 0 28px 66px rgba(0,0,0,.35);
+  position: relative; z-index: 2;
+}
+.resa-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.resa-row--2 { grid-template-columns: 1fr 1fr; }
+.rf label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--vert); margin-bottom: 7px; }
+.rf input, .rf select {
+  width: 100%; padding: 13px 15px;
+  border: 1.5px solid var(--creme-fonce); border-radius: 10px;
+  background: var(--blanc); font-family: inherit; font-size: 15px; color: var(--encre);
+  transition: var(--transition);
+}
+.rf input:focus, .rf select:focus { outline: none; border-color: var(--cuivre); box-shadow: 0 0 0 4px rgba(192,133,64,.14); }
+.resa-submit { width: 100%; justify-content: center; margin-top: 8px; }
+.resa-alt { text-align: center; font-size: 13.5px; color: var(--gris); margin-top: 18px; }
+.resa-alt a { color: var(--cuivre); font-weight: 700; text-decoration: none; }
+.resa-success { display: none; text-align: center; padding: 24px 10px; }
+.resa-success.visible { display: block; }
+.resa-success-icon {
+  width: 62px; height: 62px; margin: 0 auto 14px; border-radius: 50%;
+  background: var(--vert); color: var(--cuivre-clair);
+  display: flex; align-items: center; justify-content: center; font-size: 28px;
+}
+.resa-success h3 { font-family: 'Fraunces', serif; font-size: 24px; margin-bottom: 6px; }
+.resa-success p { font-size: 14px; color: var(--gris); }
+
+/* ═══════════ FAQ ═══════════ */
+.faq { background: var(--creme); }
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { background: var(--blanc); border: 1px solid var(--creme-fonce); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+.faq-q {
+  width: 100%; background: none; border: none;
+  padding: 18px 24px; font-family: inherit; font-size: 15px; font-weight: 600; color: var(--encre);
+  text-align: left; cursor: pointer; display: flex; justify-content: space-between; gap: 14px;
+}
+.faq-q::after { content: '+'; font-size: 22px; color: var(--cuivre); transition: transform .25s; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-a-inner { padding: 0 24px 20px; font-size: 14.5px; color: var(--gris); }
+.faq-item.open .faq-a { max-height: 260px; }
+
+/* ═══════════ FOOTER ═══════════ */
+.footer { background: var(--vert-fonce); color: var(--creme); padding: 60px 0 26px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 44px; margin-bottom: 40px; }
+.footer-logo-name { font-family: 'Fraunces', serif; font-size: 24px; font-weight: 600; }
+.footer-logo-sub { font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--cuivre-clair); margin-bottom: 14px; display: block; }
+.footer-desc { font-size: 13.5px; color: rgba(250,243,231,.6); max-width: 300px; }
+.footer h4 { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--cuivre-clair); margin-bottom: 16px; }
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 9px; font-size: 13.5px; color: rgba(250,243,231,.75); }
+.footer a { color: rgba(250,243,231,.75); text-decoration: none; }
+.footer a:hover { color: var(--cuivre-clair); }
+.footer-bottom {
+  padding-top: 24px; border-top: 1px solid rgba(250,243,231,.1);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-size: 12px; color: rgba(250,243,231,.45);
+}
+.footer-bottom a { color: var(--cuivre-clair); font-weight: 600; }
+
+/* ═══════════ BADGE DÉMO IJ GENESYS ═══════════ */
+.demo-badge {
+  position: fixed; bottom: 18px; left: 18px; z-index: 2000;
+  background: #1A2B4A; color: #fff;
+  border-radius: 999px; padding: 11px 20px;
+  font-size: 12px; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  text-decoration: none;
+  transition: var(--transition);
+}
+.demo-badge:hover { transform: translateY(-2px); }
+.demo-badge span { color: #FF6B5B; }
+
+/* Barre mobile */
+.mobilebar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 900;
+  display: none; gap: 10px;
+  background: var(--blanc); border-top: 1px solid var(--creme-fonce);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  box-shadow: 0 -8px 26px rgba(23,40,31,.15);
+}
+.mobilebar a {
+  flex: 1; display: flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 13px; border-radius: 10px; font-size: 13.5px; font-weight: 700; text-decoration: none;
+}
+.mb-tel { background: var(--creme); color: var(--vert); border: 1px solid var(--creme-fonce); }
+.mb-resa { background: var(--cuivre); color: var(--blanc); }
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media (max-width: 920px) {
+  section { padding: 64px 0; }
+  .nav-links, .nav-tel { display: none; }
+  .nav-burger { display: block; }
+  .nav-links.open {
+    display: flex; position: fixed; top: 66px; left: 0; right: 0;
+    background: var(--vert); flex-direction: column; align-items: flex-start;
+    padding: 26px; gap: 18px;
+  }
+  .hero { padding: 120px 0 70px; }
+  .hero-grid, .histoire-grid { grid-template-columns: 1fr; gap: 40px; }
+  .chiffres-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .chiffre { border: none; }
+  .plats { grid-template-columns: 1fr; }
+  .gratins-grid, .avis-grid, .infos-grid { grid-template-columns: 1fr; }
+  .resa-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .mobilebar { display: flex; }
+  body { padding-bottom: 72px; }
+  .demo-badge { bottom: 84px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span class="nav-logo-name">Le Bistro des Augustins</span>
+      <span class="nav-logo-sub">Quai des Grands Augustins · Paris 6ᵉ</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#histoire">La maison</a></li>
+      <li><a href="#carte">La carte</a></li>
+      <li><a href="#gratins">Nos gratins</a></li>
+      <li><a href="#avis">Avis</a></li>
+      <li><a href="#infos">Infos</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a href="tel:+33143540441" class="nav-tel">01 43 54 04 41</a>
+      <a href="#reserver" class="btn btn-cuivre nav-cta">Réserver</a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">Face à la Seine · Depuis toujours dans le 6ᵉ</div>
+        <h1>Les gratins qui font <em>traverser la Seine.</em></h1>
+        <p class="hero-sub">
+          Un vrai bistrot parisien au charme d'antan, à deux pas de Saint-Michel et de Notre-Dame.
+          Cuisine maison, vins choisis, et notre spécialité gratinée qui fait notre réputation
+          — des habitués du quartier jusqu'aux voyageurs du monde entier.
+        </p>
+        <div class="hero-actions">
+          <a href="#reserver" class="btn btn-cuivre">Réserver une table →</a>
+          <a href="#carte" class="btn btn-ghost">Découvrir la carte</a>
+        </div>
+        <div class="hero-proof">
+          <div class="hero-proof-item">
+            <strong><span class="hero-stars">★★★★★</span> 4,5</strong>
+            <span>2 600+ avis Google</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>9,2 / 10</strong>
+            <span>Note TheFork</span>
+          </div>
+          <div class="hero-proof-item">
+            <strong>7j / 7</strong>
+            <span>11h30 — 2h00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-card reveal">
+        <h3>Le Gratin de Canard</h3>
+        <p>Magret fondant, pommes de terre crémeuses, croûte dorée au four — le plat que nos clients traversent Paris pour retrouver.</p>
+        <div class="hero-card-row">
+          <strong>Gratin de canard <span style="color:var(--cuivre)">★</span></strong>
+          <span class="hero-card-prix">14,90 €</span>
+        </div>
+        <div class="hero-card-row">
+          <strong>Gratin de saumon</strong>
+          <span class="hero-card-prix">13,90 €</span>
+        </div>
+        <div class="hero-card-row">
+          <strong>Gratin aux fromages</strong>
+          <span class="hero-card-prix">12,90 €</span>
+        </div>
+        <div class="hero-card-row">
+          <span style="font-size:12.5px;color:var(--gris);font-style:italic;">Servis brûlants, préparés à la commande — comptez le temps d'un bon verre de vin.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BANDEAU CHIFFRES ═══════════ -->
+<div class="chiffres">
+  <div class="chiffres-inner">
+    <div class="chiffres-grid reveal">
+      <div class="chiffre"><strong>4,5 ★</strong><span>2 601 avis Google</span></div>
+      <div class="chiffre"><strong>9,2/10</strong><span>sur TheFork</span></div>
+      <div class="chiffre"><strong>7j/7</strong><span>de 11h30 à 2h00</span></div>
+      <div class="chiffre"><strong>100%</strong><span>cuisine maison</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ HISTOIRE ═══════════ -->
+<section class="histoire" id="histoire">
+  <div class="container">
+    <div class="histoire-grid">
+      <div class="histoire-visuel reveal">
+        <div class="histoire-visuel-note">
+          <strong>📍 39 Quai des Grands Augustins</strong>
+          Entre le Louvre et Notre-Dame, face aux bouquinistes de la Seine.
+        </div>
+      </div>
+      <div class="histoire-text reveal">
+        <p class="eyebrow">La maison</p>
+        <h2>Comme chez <em>Cathy</em></h2>
+        <p>
+          Ici, pas de carte interminable ni de cuisine d'assemblage : <strong>Cathy, la patronne,
+          vous accueille</strong> dans une salle intime au charme d'antan, où chaque plat est
+          préparé maison, à la commande, avec le temps qu'il faut.
+        </p>
+        <p>
+          Une dizaine de tables, des habitués qui ont leur rond de serviette, des voyageurs
+          qui reviennent à chaque passage à Paris — et cette odeur de gratin qui sort du four
+          et qui vous rappelle <strong>la cuisine de votre grand-mère</strong>.
+        </p>
+        <p class="histoire-quote">
+          « On attend son plat comme on attendait le dimanche chez mamie :
+          lentement, et avec beaucoup d'amour. »
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LA CARTE ═══════════ -->
+<section class="carte" id="carte">
+  <div class="container">
+    <p class="eyebrow">La carte</p>
+    <h2>Simple, maison, <em>gratinée</em></h2>
+    <p class="sub">Carte en français et en anglais. Les prix sont doux, les portions généreuses — c'est la maison qui veut ça.</p>
+
+    <div class="carte-tabs" role="tablist">
+      <button class="carte-tab active" data-carte="gratins">Les Gratins</button>
+      <button class="carte-tab" data-carte="entrees">Entrées & Planches</button>
+      <button class="carte-tab" data-carte="salades">Salades</button>
+      <button class="carte-tab" data-carte="desserts">Desserts & Vins</button>
+    </div>
+
+    <div class="carte-panel active" data-cpanel="gratins">
+      <div class="plats">
+        <div class="plat"><div class="plat-nom">Gratin de canard <span class="plat-star">Le culte</span><small>Magret, pommes de terre, crème, fromage gratiné</small></div><div class="plat-prix">14,90 €</div></div>
+        <div class="plat"><div class="plat-nom">Gratin de saumon<small>Saumon fondant, touche d'aneth, croûte dorée</small></div><div class="plat-prix">13,90 €</div></div>
+        <div class="plat"><div class="plat-nom">Gratin au jambon<small>Jambon blanc, béchamel maison</small></div><div class="plat-prix">12,90 €</div></div>
+        <div class="plat"><div class="plat-nom">Gratin aux fromages<small>Assortiment de fromages affinés, généreusement gratinés</small></div><div class="plat-prix">12,90 €</div></div>
+        <div class="plat"><div class="plat-nom">Gratin végétarien<small>Légumes de saison, crème et fromage</small></div><div class="plat-prix">12,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Gratin au bacon<small>Bacon grillé, pommes de terre crémeuses</small></div><div class="plat-prix">13,50 €</div></div>
+      </div>
+    </div>
+
+    <div class="carte-panel" data-cpanel="entrees">
+      <div class="plats">
+        <div class="plat"><div class="plat-nom">Planche fromage & charcuterie<small>Généreuse, idéale à partager avec un verre</small></div><div class="plat-prix">16,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Saumon fumé<small>Servi avec pain grillé et crème citronnée</small></div><div class="plat-prix">11,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Assiette de fromages<small>Sélection d'affinés</small></div><div class="plat-prix">10,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Charcuterie du moment<small>Selon arrivage</small></div><div class="plat-prix">10,50 €</div></div>
+      </div>
+    </div>
+
+    <div class="carte-panel" data-cpanel="salades">
+      <div class="plats">
+        <div class="plat"><div class="plat-nom">Salade de canard<small>Gésiers, magret, noix</small></div><div class="plat-prix">13,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Salade au chèvre chaud<small>Chèvre rôti au miel, salade croquante</small></div><div class="plat-prix">12,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Salade au saumon<small>Saumon fumé, agrumes</small></div><div class="plat-prix">12,90 €</div></div>
+        <div class="plat"><div class="plat-nom">Salade italienne<small>Tomates, mozzarella, basilic</small></div><div class="plat-prix">11,90 €</div></div>
+      </div>
+    </div>
+
+    <div class="carte-panel" data-cpanel="desserts">
+      <div class="plats">
+        <div class="plat"><div class="plat-nom">Desserts maison du jour<small>Demandez à Cathy ce qui sort du four</small></div><div class="plat-prix">6,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Café gourmand<small>Café et mignardises</small></div><div class="plat-prix">7,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Vin au verre<small>Sélection de la maison</small></div><div class="plat-prix">dès 4,50 €</div></div>
+        <div class="plat"><div class="plat-nom">Carafe de vin<small>Tarif doux avec un plat — demandez conseil</small></div><div class="plat-prix">dès 9,00 €</div></div>
+        <div class="plat"><div class="plat-nom">Cocktails<small>Classiques et créations</small></div><div class="plat-prix">dès 9,50 €</div></div>
+      </div>
+    </div>
+
+    <p class="carte-note">Carte indicative de démonstration — plats et tarifs à confirmer par la maison. Prix nets, service compris.</p>
+  </div>
+</section>
+
+<!-- ═══════════ GRATINS SIGNATURE ═══════════ -->
+<section class="gratins" id="gratins">
+  <div class="container">
+    <p class="eyebrow">La spécialité</p>
+    <h2>Le gratin, élevé au rang <em>d'art de vivre</em></h2>
+    <p class="sub" style="margin-bottom:48px">Préparés à la commande dans notre petite cuisine, servis brûlants dans leur plat. Nos clients le disent : ça vaut l'attente.</p>
+
+    <div class="gratins-grid">
+      <div class="gratin reveal">
+        <span class="gratin-tag gratin-tag--star">★ Le plus demandé</span>
+        <h3>Le Canard</h3>
+        <p>Magret fondant sur lit de pommes de terre crémeuses, gratiné jusqu'à la croûte parfaite. Celui dont parlent 2 600 avis.</p>
+      </div>
+      <div class="gratin reveal">
+        <span class="gratin-tag">Le marin</span>
+        <h3>Le Saumon</h3>
+        <p>Saumon nacré, crème délicate, une touche d'aneth — l'autre chouchou des habitués, à marier avec un blanc de la carte.</p>
+      </div>
+      <div class="gratin reveal">
+        <span class="gratin-tag">Le végétarien</span>
+        <h3>Le Potager</h3>
+        <p>Légumes de saison sous une couverture dorée de fromage fondu. La preuve qu'un gratin n'a pas besoin de viande pour réconforter.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AVIS ═══════════ -->
+<section class="avis" id="avis">
+  <div class="container">
+    <p class="eyebrow">Ils en parlent mieux que nous</p>
+    <h2>4,5 étoiles, <em>2 600 histoires</em></h2>
+    <p class="sub" style="margin-bottom:44px">Des avis publics, vérifiables, laissés par de vrais clients sur Google, TheFork et Tripadvisor.</p>
+
+    <div class="avis-grid">
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Un vrai bistrot parisien avec une cuisine maison incroyable. Le gratin au magret de canard : exceptionnel. On a l'impression d'attendre que sa grand-mère finisse de préparer son plat préféré — lentement, avec beaucoup d'amour. »</p>
+        <footer>Avis Google · traduit de l'anglais</footer>
+      </div>
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Accueil très sympathique. Les gratins sont vraiment très bons. Nous reviendrons avec plaisir. »</p>
+        <footer>Avis TheFork</footer>
+      </div>
+      <div class="avis-card reveal">
+        <div class="avis-stars">★★★★★</div>
+        <p>« Trouvé par hasard et aucun regret : le meilleur restaurant de notre séjour à Paris. Je recommande les gratins, un délice. Accueil charmant. C'est petit, mieux vaut réserver, mais on s'y sent bien. »</p>
+        <footer>Avis Tripadvisor</footer>
+      </div>
+    </div>
+
+    <div class="avis-badges reveal">
+      <span class="avis-badge"><span>★</span> Google — 4,5 / 5 · 2 601 avis</span>
+      <span class="avis-badge"><span>★</span> TheFork — 9,2 / 10</span>
+      <span class="avis-badge"><span>★</span> Tripadvisor — Certificat d'excellence</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INFOS PRATIQUES ═══════════ -->
+<section class="infos" id="infos">
+  <div class="container">
+    <p class="eyebrow">Infos pratiques</p>
+    <h2>Nous <em>trouver</em></h2>
+    <p class="sub" style="margin-bottom:44px">Sur les quais, entre le Louvre et Notre-Dame, face aux bouquinistes.</p>
+
+    <div class="infos-grid">
+      <div class="info reveal">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3>Adresse</h3>
+        <p><strong>39 Quai des Grands Augustins</strong><br>75006 Paris<br>Métro Saint-Michel (lignes 4, B, C) — 3 min à pied</p>
+      </div>
+      <div class="info reveal">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Horaires</h3>
+        <p><strong>7 jours sur 7</strong><br>De 11h30 à 2h00 du matin<br>Service continu — la cuisine du soir jusqu'à tard</p>
+      </div>
+      <div class="info reveal">
+        <div class="info-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Contact</h3>
+        <p>Téléphone : <a href="tel:+33143540441">01 43 54 04 41</a><br>English spoken · Carte FR / EN<br>Terrasse côté quai (sans réservation)</p>
+      </div>
+    </div>
+
+    <div class="infos-conseil reveal">
+      <span>💡</span>
+      <span><strong>Le conseil de la maison :</strong> la salle est petite et très demandée — réservez, surtout après 18h. La terrasse, elle, se joue à l'arrivée : premier arrivé, premier assis face à la Seine.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RÉSERVATION ═══════════ -->
+<section class="resa" id="reserver">
+  <div class="container">
+    <div class="resa-head">
+      <p class="eyebrow eyebrow--line-after" style="justify-content:center">Réservation</p>
+      <h2>Votre table <em>vous attend</em></h2>
+      <p class="sub">Une dizaine de tables seulement — réservez la vôtre en 30 secondes.</p>
+    </div>
+
+    <div class="resa-box reveal">
+      <form id="resaForm" novalidate>
+        <div class="resa-row">
+          <div class="rf">
+            <label for="r-date">Date</label>
+            <input type="date" id="r-date" required>
+          </div>
+          <div class="rf">
+            <label for="r-heure">Heure</label>
+            <select id="r-heure" required>
+              <option value="">—</option>
+              <option>12h00</option><option>12h30</option><option>13h00</option><option>13h30</option>
+              <option>19h00</option><option>19h30</option><option>20h00</option><option>20h30</option>
+              <option>21h00</option><option>21h30</option><option>22h00</option>
+            </select>
+          </div>
+          <div class="rf">
+            <label for="r-couverts">Couverts</label>
+            <select id="r-couverts" required>
+              <option value="">—</option>
+              <option>2 personnes</option><option>3 personnes</option><option>4 personnes</option>
+              <option>5 personnes</option><option>6 personnes</option><option>Groupe (7+)</option>
+            </select>
+          </div>
+        </div>
+        <div class="resa-row resa-row--2">
+          <div class="rf">
+            <label for="r-nom">Nom</label>
+            <input type="text" id="r-nom" required minlength="2" placeholder="Votre nom">
+          </div>
+          <div class="rf">
+            <label for="r-tel">Téléphone</label>
+            <input type="tel" id="r-tel" required placeholder="06 12 34 56 78">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-cuivre resa-submit">Réserver ma table →</button>
+        <p class="resa-alt">Ou appelez-nous directement : <a href="tel:+33143540441">01 43 54 04 41</a></p>
+      </form>
+
+      <div class="resa-success" id="resaSuccess" role="status">
+        <div class="resa-success-icon">✓</div>
+        <h3>Demande envoyée !</h3>
+        <p>Nous vous confirmons votre table par téléphone très vite.<br>À tout de suite au 39 Quai des Grands Augustins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ ═══════════ -->
+<section class="faq">
+  <div class="container">
+    <p class="eyebrow">Questions fréquentes</p>
+    <h2>Avant de <em>venir</em></h2>
+    <div class="faq-list" style="margin-top:36px">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Faut-il réserver ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Fortement conseillé, surtout après 18h : la salle compte une dizaine de tables et se remplit vite. La terrasse, en revanche, ne se réserve pas — elle se joue à l'arrivée.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Do you speak English?</button>
+        <div class="faq-a"><div class="faq-a-inner">Yes! Our team speaks English and the menu is available in both French and English. Travelers from all over the world are part of the family here.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Y a-t-il des options végétariennes ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Oui — notre gratin végétarien aux légumes de saison, ainsi que plusieurs salades. Signalez toute allergie à l'équipe, tout est préparé maison.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Acceptez-vous les groupes ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Oui, dans la limite de notre petite salle ! Pour les tablées de 7 personnes et plus, appelez-nous au 01 43 54 04 41 afin qu'on vous arrange ça au mieux.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Pourquoi l'attente est-elle parfois un peu longue ?</button>
+        <div class="faq-a"><div class="faq-a-inner">Parce que chaque gratin est préparé à la commande et passe au four le temps qu'il faut. Ici, rien ne réchauffe : tout se cuisine. Prenez un verre, regardez la Seine — ça arrive.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-name">Le Bistro des Augustins</div>
+        <span class="footer-logo-sub">La maison du gratin · Paris 6ᵉ</span>
+        <p class="footer-desc">Bistrot parisien au charme d'antan, face à la Seine, entre le Louvre et Notre-Dame. Cuisine maison, 7j/7 de 11h30 à 2h.</p>
+      </div>
+      <div>
+        <h4>Le bistrot</h4>
+        <ul>
+          <li><a href="#histoire">La maison</a></li>
+          <li><a href="#carte">La carte</a></li>
+          <li><a href="#gratins">Nos gratins</a></li>
+          <li><a href="#reserver">Réserver</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Pratique</h4>
+        <ul>
+          <li>39 Quai des Grands Augustins, 75006</li>
+          <li><a href="tel:+33143540441">01 43 54 04 41</a></li>
+          <li>7j/7 · 11h30 — 2h00</li>
+          <li>Métro Saint-Michel</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Le Bistro des Augustins — Démonstration non contractuelle</span>
+      <span>Site créé avec ✦ par <a href="https://ijgenesys.fr" target="_blank" rel="noopener">IJ Genesys</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Badge démo -->
+<a href="https://ijgenesys.fr" target="_blank" rel="noopener" class="demo-badge">
+  <span>✦</span> Démo IJ Genesys — ce site pourrait être le vôtre
+</a>
+
+<!-- Barre mobile -->
+<div class="mobilebar">
+  <a href="tel:+33143540441" class="mb-tel">📞 Appeler</a>
+  <a href="#reserver" class="mb-resa">Réserver une table</a>
+</div>
+
+<script>
+(function() {
+  'use strict';
+
+  /* Menu mobile */
+  var burger = document.getElementById('navBurger');
+  var links = document.getElementById('navLinks');
+  burger.addEventListener('click', function() {
+    var open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() { links.classList.remove('open'); });
+  });
+
+  /* Reveal au scroll */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(es) {
+      es.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('in'); });
+  }
+
+  /* Onglets carte */
+  document.querySelectorAll('.carte-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.carte-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.carte-panel').forEach(function(p) { p.classList.remove('active'); });
+      tab.classList.add('active');
+      document.querySelector('.carte-panel[data-cpanel="' + tab.dataset.carte + '"]').classList.add('active');
+    });
+  });
+
+  /* FAQ */
+  document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+      var item = q.closest('.faq-item');
+      var was = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!was) { item.classList.add('open'); q.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  /* Réservation (démo) */
+  document.getElementById('resaForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var ok = true;
+    form.querySelectorAll('input, select').forEach(function(el) {
+      if (!el.checkValidity()) { el.reportValidity(); ok = false; }
+    });
+    if (!ok) return;
+    form.style.display = 'none';
+    document.getElementById('resaSuccess').classList.add('visible');
+  });
+
+})();
+</script>
+
+</body>
+</html>
