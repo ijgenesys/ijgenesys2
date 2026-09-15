@@ -7,7 +7,7 @@
 <title>Serein</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--fond:#FAF6F0;--carte:#FFFFFF;--carte2:#F3EDE4;--violet:#6C5CE7;--menthe:#2FA98C;--rose:#F2876B;--rouge:#E5484D;--txt:#241E33;--gris:#8A8399;--ligne:rgba(36,30,51,.09)}
+:root{--fond:#F1F2F4;--carte:#FFFFFF;--carte2:#E9EAEE;--violet:#4F46E5;--menthe:#0F766E;--rose:#C2410C;--rouge:#DC2626;--txt:#16171B;--gris:#6B7280;--ligne:rgba(22,23,27,.08)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:'Outfit',sans-serif;background:var(--fond);color:var(--txt);max-width:430px;margin:0 auto;min-height:100vh;padding-bottom:86px}
 .screen{display:none;padding:22px 20px 20px;animation:fade .3s}
@@ -16,30 +16,30 @@ body{font-family:'Outfit',sans-serif;background:var(--fond);color:var(--txt);max
 .head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
 .logo{font-weight:800;font-size:22px}
 .logo span{color:var(--menthe)}
-.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--rose));display:flex;align-items:center;justify-content:center;font-weight:700}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#4F46E5,#7C74F0);display:flex;align-items:center;justify-content:center;font-weight:700}
 h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 .sub{color:var(--gris);font-size:14px;font-weight:300;margin-bottom:20px}
-.carte{background:var(--carte);border:1px solid var(--ligne);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 6px 24px rgba(36,30,51,.06)}
+.carte{background:var(--carte);border:1px solid var(--ligne);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 2px 12px rgba(22,23,27,.05)}
 .carte h3{font-size:15px;font-weight:600;margin-bottom:4px}
 .carte p{font-size:12.5px;color:var(--gris)}
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(47,169,140,.12);color:var(--menthe);font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(15,118,110,.1);color:var(--menthe);font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px}
 .btn{display:block;width:100%;background:var(--violet);color:#fff;border:none;border-radius:16px;padding:16px;font-family:'Outfit';font-weight:700;font-size:15px;cursor:pointer;transition:.2s;text-align:center}
 .btn:active{transform:scale(.98)}
 .btn.mint{background:var(--menthe);color:#fff}
 .btn.ghost{background:transparent;border:1.5px solid var(--ligne);color:var(--txt);font-weight:500}
 .btn.danger{background:var(--rouge)}
-.btn.dark{background:#241E33;color:#FAF6F0}
+.btn.dark{background:#16171B;color:#F1F2F4}
 .row{display:flex;gap:10px}.row .btn{flex:1}
-.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(250,246,240,.94);backdrop-filter:blur(16px);border-top:1px solid var(--ligne);box-shadow:0 -8px 30px rgba(36,30,51,.06);display:none;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(241,242,244,.95);backdrop-filter:blur(16px);border-top:1px solid var(--ligne);box-shadow:0 -8px 30px rgba(36,30,51,.06);display:none;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
 .tabs.on{display:flex}
-.tab{flex:1;text-align:center;color:var(--gris);font-size:10.5px;font-weight:500;cursor:pointer;padding:4px 0}
+.tab{flex:1;text-align:center;color:var(--gris);font-size:12.5px;font-weight:600;cursor:pointer;padding:12px 0;letter-spacing:.01em}
 .tab .ic{font-size:21px;display:block;margin-bottom:3px}
 .tab.on{color:var(--menthe)}
-.mode-date{background:linear-gradient(135deg,#ECE7FF,#FBF3EC);border:1px solid rgba(108,92,231,.25);border-radius:24px;padding:22px 20px;text-align:center;margin-bottom:14px}
+.mode-date{background:linear-gradient(135deg,#EEF0FF,#F7F8FA);border:1px solid rgba(79,70,229,.2);border-radius:14px;padding:22px 20px;text-align:center;margin-bottom:14px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.mini{background:var(--carte);border:1px solid var(--ligne);border-radius:20px;padding:16px 14px;text-align:center;cursor:pointer;box-shadow:0 6px 24px rgba(36,30,51,.06)}
+.mini{background:var(--carte);border:1px solid var(--ligne);border-radius:14px;padding:18px 14px;text-align:left;cursor:pointer;box-shadow:0 2px 12px rgba(22,23,27,.05)}
 .mini .ic{font-size:26px;margin-bottom:6px;display:block}
-.mini b{font-size:13px;font-weight:600;display:block}
+.mini b{font-size:13.5px;font-weight:600;display:block;margin-bottom:2px}
 .mini span{font-size:11px;color:var(--gris)}
 /* verrouillage */
 #s-lock{padding-top:60px;text-align:center}
@@ -47,8 +47,8 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 .pin-dot{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--gris);transition:.15s}
 .pin-dot.f{background:var(--menthe);border-color:var(--menthe)}
 .pad{display:grid;grid-template-columns:repeat(3,74px);gap:14px;justify-content:center}
-.key{width:74px;height:74px;border-radius:50%;background:#FFFFFF;border:1px solid var(--ligne);color:var(--txt);box-shadow:0 4px 14px rgba(36,30,51,.07);font-size:26px;font-family:'Outfit';font-weight:500;cursor:pointer;transition:.12s}
-.key:active{background:#ECE7FF;transform:scale(.94)}
+.key{width:74px;height:74px;border-radius:50%;background:#FFFFFF;border:1px solid var(--ligne);color:var(--txt);box-shadow:0 2px 8px rgba(22,23,27,.06);font-size:26px;font-family:'Outfit';font-weight:500;cursor:pointer;transition:.12s}
+.key:active{background:#EEF0FF;transform:scale(.94)}
 .key.empty{background:transparent;border:none;cursor:default}
 .shake{animation:shake .4s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
@@ -63,13 +63,13 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 .wave{display:flex;gap:4px;align-items:flex-end;justify-content:center;height:42px;margin-bottom:18px}
 .wave i{width:5px;background:var(--menthe);border-radius:3px;animation:wv 0.9s infinite ease-in-out}
 @keyframes wv{0%,100%{height:8px}50%{height:38px}}
-.stream-note{background:rgba(47,169,140,.08);border:1px solid rgba(47,169,140,.3);border-radius:14px;padding:12px 14px;font-size:12px;color:#1E6B57;line-height:1.55;margin-bottom:14px}
-.entry{background:var(--carte);border:1px solid var(--ligne);border-radius:18px;box-shadow:0 4px 16px rgba(36,30,51,.05);padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.stream-note{background:rgba(15,118,110,.06);border:1px solid rgba(15,118,110,.22);border-radius:12px;padding:12px 14px;font-size:12px;color:#0F5A54;line-height:1.55;margin-bottom:14px}
+.entry{background:var(--carte);border:1px solid var(--ligne);border-radius:14px;box-shadow:0 2px 10px rgba(22,23,27,.04);padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
 .entry .t{font-size:13.5px;font-weight:500}
 .entry .d{font-size:11px;color:var(--gris);margin-top:2px}
 .lock{color:var(--menthe);font-size:18px}
-.notice{background:rgba(108,92,231,.07);border:1px solid rgba(108,92,231,.22);border-radius:14px;padding:12px 14px;font-size:12px;color:#4A3EB8;margin-bottom:14px;line-height:1.5}
-#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:#241E33;color:#FAF6F0;box-shadow:0 10px 30px rgba(36,30,51,.25);font-weight:700;font-size:13px;padding:12px 20px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none;z-index:99;max-width:88%;text-align:center}
+.notice{background:rgba(79,70,229,.06);border:1px solid rgba(79,70,229,.18);border-radius:12px;padding:12px 14px;font-size:12px;color:#3B34B5;margin-bottom:14px;line-height:1.5}
+#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:#16171B;color:#F1F2F4;box-shadow:0 8px 26px rgba(22,23,27,.28);font-weight:700;font-size:13px;padding:12px 20px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none;z-index:99;max-width:88%;text-align:center}
 #toast.vu{opacity:1;transform:translateX(-50%) translateY(0)}
 #toast.rouge{background:var(--rouge);color:#fff}
 .demo-tag{position:fixed;top:10px;right:10px;background:rgba(139,124,246,.9);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:5px 10px;border-radius:999px;z-index:50}
@@ -79,7 +79,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 .live-ring b{position:relative;font-size:26px;font-weight:800}
 .live-ring span{position:relative;font-size:10px;color:var(--gris);letter-spacing:.1em;text-transform:uppercase}
 .anges{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
-.ange{display:flex;align-items:center;gap:7px;background:#FFFFFF;border:1px solid var(--ligne);box-shadow:0 3px 10px rgba(36,30,51,.05);border-radius:999px;padding:7px 13px;font-size:12.5px}
+.ange{display:flex;align-items:center;gap:7px;background:#FFFFFF;border:1px solid var(--ligne);box-shadow:0 2px 8px rgba(22,23,27,.04);border-radius:999px;padding:7px 13px;font-size:12.5px}
 .ange .d{width:8px;height:8px;border-radius:50%;background:var(--menthe)}
 </style>
 </head>
@@ -87,8 +87,18 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <div class="demo-tag" id="dtag">DÉMO IJ GENESYS</div>
 <div id="toast"></div>
 
+<!-- ═══ FACE ID ═══ -->
+<div class="screen on" id="s-faceid" style="padding-top:90px;text-align:center">
+  <div class="logo" style="font-size:30px">Serein<span>.</span></div>
+  <p class="sub" style="margin-top:8px">Sécurisé par Face ID</p>
+  <div id="fid" style="width:120px;height:120px;margin:34px auto;border:2.5px solid var(--txt);border-radius:32px;display:flex;align-items:center;justify-content:center;font-size:52px;transition:.4s">☺</div>
+  <button class="btn dark" style="max-width:280px;margin:0 auto" onclick="faceID()">Déverrouiller avec Face ID</button>
+  <button class="btn ghost" style="max-width:280px;margin:12px auto 0;border:none;font-size:13px" onclick="montrerPad()">Face ID indisponible ? Utiliser le code</button>
+  <div class="lock-hint" style="max-width:330px;margin:30px auto 0">Pour la démo : Face ID = déverrouillage quotidien. Le code n'apparaît qu'en secours — et c'est là que vit le code de contrainte : refuser Face ID est toujours crédible ("ça marche pas"), taper le code leurre devient naturel.</div>
+</div>
+
 <!-- ═══ ÉCRAN DE VERROUILLAGE ═══ -->
-<div class="screen on" id="s-lock">
+<div class="screen" id="s-lock">
   <div class="logo" style="font-size:30px">Serein<span>.</span></div>
   <p class="sub" style="margin-top:8px">Entrez votre code</p>
   <div class="pinview" id="pinview">
@@ -109,35 +119,35 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ ACCUEIL RÉEL ═══ -->
 <div class="screen" id="s-home">
   <div class="head"><div class="logo">Serein<span>.</span></div><div class="avatar">S</div></div>
-  <h1>Bonsoir Sarah 👋</h1>
+  <h1>Bonsoir Sarah</h1>
   <p class="sub">Sortez l'esprit libre — on veille.</p>
   <div class="mode-date">
-    <div style="font-size:36px;margin-bottom:6px">🌙</div>
+    
     <h3 style="font-size:18px;margin-bottom:3px">Mode Sortie</h3>
     <p style="font-size:12.5px;color:var(--gris);margin-bottom:14px">Anges gardiens · check-ins · SOS discret</p>
     <button class="btn mint" onclick="go('s-live');toast('Mode Sortie activé — Léa et Maxime veillent 😇')">Activer</button>
   </div>
   <button class="btn dark" style="margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px" onclick="go('s-noire')">
-    🎙️ <span>Boîte noire — enregistrer discrètement</span>
+    <span>Boîte noire · Enregistrement discret</span>
   </button>
   <div class="grid2" style="margin-bottom:12px">
-    <div class="mini" onclick="go('s-profil')"><span class="ic">🪪</span><b>Identité vérifiée</b><span>badge KYC</span></div>
-    <div class="mini" onclick="go('s-coffre')"><span class="ic">🔐</span><b>Coffre-fort</b><span>journal chiffré</span></div>
+    <div class="mini" onclick="go('s-profil')"><b>Identité vérifiée</b><span>badge KYC</span></div>
+    <div class="mini" onclick="go('s-coffre')"><b>Coffre-fort</b><span>journal chiffré</span></div>
   </div>
   <div class="grid2" style="margin-bottom:12px">
-    <div class="mini" onclick="go('s-retour')"><span class="ic">🏠</span><b>Trajet retour</b><span>rentrer veillée</span></div>
-    <div class="mini" onclick="go('s-event')"><span class="ic">🎪</span><b>Serein Event</b><span>soirée sécurisée</span></div>
+    <div class="mini" onclick="go('s-retour')"><b>Trajet retour</b><span>rentrer veillée</span></div>
+    <div class="mini" onclick="go('s-event')"><b>Serein Event</b><span>soirée sécurisée</span></div>
   </div>
   <div class="grid2">
-    <div class="mini" onclick="go('s-fiche')"><span class="ic">📋</span><b>Fiche de date</b><span>qui, où, quand</span></div>
-    <div class="mini" onclick="go('s-carte')"><span class="ic">🗺️</span><b>Carte sécurité</b><span>par la communauté</span></div>
+    <div class="mini" onclick="go('s-fiche')"><b>Fiche de date</b><span>qui, où, quand</span></div>
+    <div class="mini" onclick="go('s-carte')"><b>Carte sécurité</b><span>par la communauté</span></div>
   </div>
 </div>
 
 <!-- ═══ BOÎTE NOIRE ═══ -->
 <div class="screen" id="s-noire">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div><div class="badge" id="bn-badge" style="display:none">● flux chiffré actif</div></div>
-  <h1>Boîte noire 🎙️</h1>
+  <h1>Boîte noire</h1>
   <p class="sub">L'audio part <b style="color:var(--txt)">directement dans votre coffre</b>, chiffré, en continu. Rien n'est stocké sur ce téléphone — le confisquer ou le casser ne détruit rien.</p>
   <div class="rec-ring idle" id="ring">
     <div class="rec-dot" id="rdot" style="display:none"></div>
@@ -179,24 +189,24 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
     <button class="btn ghost" onclick="toast('✓ Check-in envoyé — appui LONG aurait envoyé l\'alerte cachée')">✓ Tout va bien</button>
   </div>
   <p style="font-size:10.5px;color:var(--gris);text-align:center;margin-bottom:10px">Anti-coercition : forcée de valider ? <b style="color:var(--txt)">appui long</b> = "OK" à l'écran, alerte cachée aux anges.</p>
-  <button class="btn" style="background:#F2876B;margin-bottom:10px" onclick="toast('🚕 \'Viens me chercher\' → Léa notifiée avec ta position · option VTC vérifié proposée (8 min)')">🚕 Viens me chercher — sans drame, je veux juste partir</button>
+  <button class="btn" style="background:#C2410C;margin-bottom:10px" onclick="toast('🚕 \'Viens me chercher\' → Léa notifiée avec ta position · option VTC vérifié proposée (8 min)')">Viens me chercher — sans drame, je veux juste partir</button>
   <div class="carte" style="margin-bottom:10px">
-    <h3>⌚ Montre connectée <span class="badge" style="float:right;font-size:10px" id="bpm">❤️ 74 bpm</span></h3>
+    <h3>Montre connectée <span class="badge" style="float:right;font-size:10px" id="bpm">❤️ 74 bpm</span></h3>
     <p>Fréquence cardiaque + détection de chute surveillées. Pic anormal → l'app vous interroge, sans réponse → anges alertés.</p>
     <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('⌚ Pic simulé : 142 bpm + immobilité → \'Tout va bien ?\' sur la montre · sans réponse 60 s → alerte','rouge')">Simuler un pic cardiaque (démo)</button>
   </div>
   <div class="carte" style="margin-bottom:10px">
-    <h3>🎤 Mot-code vocal <span class="badge" style="float:right;font-size:10px">écoute active</span></h3>
+    <h3>Mot-code vocal <span class="badge" style="float:right;font-size:10px">écoute active</span></h3>
     <p>Votre phrase : <b style="color:var(--txt)">« j'ai oublié de rappeler maman »</b> — détectée = SOS silencieux + boîte noire, sans toucher le téléphone. Analyse 100% locale, rien n'est envoyé.</p>
     <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('🎤 Mot-code détecté → SOS silencieux + boîte noire démarrée + position partagée. Le téléphone n\'a pas bougé de la table.','rouge')">Simuler la détection (démo)</button>
   </div>
   <button class="btn dark" style="margin-bottom:10px" onclick="go('s-noire')">🎙️ Boîte noire</button>
   <div class="carte" style="margin-bottom:10px">
-    <h3>🧠 Veille intelligente <span class="badge" style="float:right;font-size:10px">active</span></h3>
+    <h3>Veille intelligente <span class="badge" style="float:right;font-size:10px">active</span></h3>
     <p>Surveille les anomalies : immobilité prolongée en zone inconnue · batterie coupée brutalement · sortie de zone prévue</p>
     <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('🧠 Anomalie simulée : téléphone immobile 47 min, zone inconnue → Léa & Maxime interrogés : \'Avez-vous des nouvelles de Sarah ?\'','rouge')">Simuler une anomalie (démo)</button>
   </div>
-  <button class="btn danger" onclick="toast('🚨 SOS — position envoyée à Léa & Maxime + 3 membres Serein vérifiées à moins de 300 m notifiées','rouge')">🚨 SOS</button>
+  <button class="btn danger" onclick="toast('🚨 SOS — position envoyée à Léa & Maxime + 3 membres Serein vérifiées à moins de 300 m notifiées','rouge')">SOS</button>
   <p style="text-align:center;font-size:11px;color:var(--gris);margin-top:8px">Le SOS alerte aussi le réseau : <b style="color:var(--txt)">12 membres vérifiées à proximité</b> ce soir</p>
   <button class="btn ghost" style="margin-top:12px" onclick="go('s-home');toast('Sortie terminée ✓')">Terminer ma sortie</button>
 </div>
@@ -204,7 +214,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ COFFRE RÉEL ═══ -->
 <div class="screen" id="s-coffre">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
-  <h1>Coffre-fort 🔐</h1>
+  <h1>Coffre-fort</h1>
   <p class="sub">Chiffré de bout en bout, horodaté, infalsifiable.</p>
   <div class="notice">Personne d'autre que vous ne peut lire ces entrées — pas même Serein. Transmissibles à un avocat ou une association le jour où VOUS le décidez.</div>
   <button class="btn" onclick="ajEntree('Entrée scellée','texte')">+ Déposer une entrée</button>
@@ -217,17 +227,17 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ LEURRE (code de contrainte) ═══ -->
 <div class="screen" id="s-decoy">
   <div class="head"><div class="logo">Serein<span>.</span></div><div class="avatar">S</div></div>
-  <h1>Bonsoir Sarah 👋</h1>
+  <h1>Bonsoir Sarah</h1>
   <p class="sub">Sortez l'esprit libre — on veille.</p>
   <div class="mode-date">
-    <div style="font-size:36px;margin-bottom:6px">🌙</div>
+    
     <h3 style="font-size:18px;margin-bottom:3px">Mode Sortie</h3>
     <p style="font-size:12.5px;color:var(--gris);margin-bottom:14px">Aucune sortie en cours</p>
     <button class="btn mint" onclick="toast('Configurez d\\'abord vos anges gardiens')">Activer</button>
   </div>
   <div class="grid2">
-    <div class="mini" onclick="toast('Profil : Sarah M. · vérifiée ✓')"><span class="ic">🪪</span><b>Identité vérifiée</b><span>badge KYC</span></div>
-    <div class="mini" onclick="go('s-coffre-d')"><span class="ic">🔐</span><b>Coffre-fort</b><span>journal chiffré</span></div>
+    <div class="mini" onclick="toast('Profil : Sarah M. · vérifiée ✓')"><b>Identité vérifiée</b><span>badge KYC</span></div>
+    <div class="mini" onclick="go('s-coffre-d')"><b>Coffre-fort</b><span>journal chiffré</span></div>
   </div>
   <div class="carte" style="margin-top:14px"><h3>Dernière sortie</h3><p>Ciné avec Léa · 2 sept. · terminée ✓</p></div>
 </div>
@@ -235,7 +245,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ COFFRE LEURRE ═══ -->
 <div class="screen" id="s-coffre-d">
   <div class="head"><div class="logo" onclick="go('s-decoy')">‹ Retour</div></div>
-  <h1>Coffre-fort 🔐</h1>
+  <h1>Coffre-fort</h1>
   <p class="sub">Chiffré de bout en bout, horodaté.</p>
   <button class="btn" onclick="toast('Entrée ajoutée ✓')">+ Déposer une entrée</button>
   <div style="height:14px"></div>
@@ -246,7 +256,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ TRAJET RETOUR ═══ -->
 <div class="screen" id="s-retour">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div><div class="badge" id="ret-badge" style="display:none">● trajet veillé</div></div>
-  <h1>Je rentre 🏠</h1>
+  <h1>Trajet retour</h1>
   <p class="sub">Le moment le plus risqué de la soirée, enfin couvert. Vos anges suivent votre retour — et s'inquiètent à votre place.</p>
   <div class="carte" id="ret-idle">
     <h3>Itinéraire détecté</h3>
@@ -269,34 +279,34 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ SEREIN EVENT ═══ -->
 <div class="screen" id="s-event">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
-  <h1>Serein Event 🎪</h1>
+  <h1>Serein Event</h1>
   <p class="sub">Les organisateurs partenaires (soirées étudiantes, festivals, bars) connectent leur sécurité à l'app.</p>
   <div class="carte" style="border-color:rgba(139,124,246,.4)">
-    <h3>🎉 Soirée BDE — Wanderlust Paris</h3>
+    <h3>Soirée BDE — Wanderlust Paris</h3>
     <p>Ce soir · partenaire vérifié</p>
     <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-      <span class="badge">🛡️ 4 staff sécurité connectés</span>
-      <span class="badge">👥 87 membres Serein présentes</span>
-      <span class="badge">📡 Maillage hors-réseau actif</span>
+      <span class="badge">4 staff sécurité connectés</span>
+      <span class="badge">87 membres Serein présentes</span>
+      <span class="badge">Maillage hors-réseau actif</span>
     </div>
   </div>
   <button class="btn" style="margin-bottom:10px" onclick="toast('✓ Soirée rejointe — le staff sécurité peut recevoir vos alertes')">Rejoindre avec le code événement</button>
-  <button class="btn danger" onclick="toast('🚨 Alerte envoyée au staff sécurité — un agent arrive vers votre position (zone bar, 40 s)','rouge')">🚨 Alerter le staff du lieu</button>
+  <button class="btn danger" onclick="toast('🚨 Alerte envoyée au staff sécurité — un agent arrive vers votre position (zone bar, 40 s)','rouge')">Alerter le staff du lieu</button>
   <div class="notice" style="margin-top:14px">Pourquoi c'est fort : l'alerte va à quelqu'un qui est DÉJÀ sur place, en 40 secondes. Et <b>même sans réseau</b> (festival, sous-sol) : votre alerte saute de téléphone en téléphone entre membres Serein jusqu'à trouver du signal. Et pour les organisateurs, "Soirée partenaire Serein" devient un argument d'affluence. C'est eux qui paient.</div>
 </div>
 
 <!-- ═══ FICHE DE DATE ═══ -->
 <div class="screen" id="s-fiche">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
-  <h1>Fiche de date 📋</h1>
+  <h1>Fiche de date</h1>
   <p class="sub">30 secondes avant la rencontre. Si quelque chose tourne mal, vos anges savent QUI, OÙ et QUAND — pas juste "elle était sortie".</p>
   <div class="carte">
     <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
-      <div class="avatar" style="width:54px;height:54px;border-radius:14px;font-size:22px;background:linear-gradient(135deg,#F2876B,#6C5CE7)">T</div>
+      <div class="avatar" style="width:54px;height:54px;border-radius:14px;font-size:22px;background:linear-gradient(135deg,#475569,#4F46E5)">T</div>
       <div><b style="font-size:16px">Thomas, 28 ans</b><p style="font-size:12px;color:var(--gris)">photo importée de l'app de rencontre</p></div>
       <span class="badge" style="margin-left:auto">✓ vérifié Serein</span>
     </div>
-    <p style="font-size:13px">📍 Café Oberkampf, Paris 11ᵉ<br>⏰ Ce soir, 19h30 · première rencontre<br>💬 Rencontré sur Hinge · pseudo @thomas.prl</p>
+    <p style="font-size:13px">Café Oberkampf, Paris 11ᵉ<br>Ce soir, 19h30 · première rencontre<br>Rencontré sur Hinge · pseudo @thomas.prl</p>
   </div>
   <button class="btn mint" onclick="toast('📋 Fiche partagée à Léa & Maxime — ils ont le visage, le lieu, l\'heure et le pseudo ✓')">Partager la fiche à mes anges</button>
   <div class="notice" style="margin-top:14px">Si Thomas est aussi sur Serein, sa fiche affiche son badge d'identité vérifiée — et le fait qu'il accepte la fiche est déjà un signal de confiance. Un prédateur, lui, détestera cette app.</div>
@@ -305,7 +315,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 <!-- ═══ CARTE SÉCURITÉ ═══ -->
 <div class="screen" id="s-carte">
   <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
-  <h1>Carte sécurité 🗺️</h1>
+  <h1>Carte sécurité</h1>
   <p class="sub">Construite par les signalements anonymisés de la communauté — les lieux parlent.</p>
   <div class="carte" style="padding:0;overflow:hidden">
     <div style="position:relative;height:260px;background:linear-gradient(135deg,#EDE9E0,#F5F1E8)">
@@ -327,10 +337,10 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
 </div>
 
 <div class="tabs" id="tabs">
-  <div class="tab on" data-s="s-home" onclick="tab(this)"><span class="ic">🏠</span>Accueil</div>
-  <div class="tab" data-s="s-noire" onclick="tab(this)"><span class="ic">🎙️</span>Boîte noire</div>
-  <div class="tab" data-s="s-live" onclick="tab(this)"><span class="ic">🌙</span>Sortie</div>
-  <div class="tab" data-s="s-coffre" onclick="tab(this)"><span class="ic">🔐</span>Coffre</div>
+  <div class="tab on" data-s="s-home" onclick="tab(this)">Accueil</div>
+  <div class="tab" data-s="s-noire" onclick="tab(this)">Boîte noire</div>
+  <div class="tab" data-s="s-live" onclick="tab(this)">Sortie</div>
+  <div class="tab" data-s="s-coffre" onclick="tab(this)">Coffre</div>
 </div>
 
 <script>
@@ -342,6 +352,25 @@ function go(id){
   window.scrollTo(0,0);
 }
 function tab(el){go(el.dataset.s)}
+/* Face ID */
+function faceID(){
+  var f=document.getElementById('fid');
+  f.style.borderColor='var(--menthe)';f.style.transform='scale(1.06)';f.textContent='✓';
+  toast('Face ID reconnu');
+  setTimeout(function(){document.getElementById('tabs').classList.add('on');go('s-home')},700);
+}
+function montrerPad(){go('s-lock')}
+var coffreOk=false;
+var _go=go;
+go=function(id){
+  if(id==='s-coffre' && !contrainte && !coffreOk){
+    toast('Face ID requis pour le coffre… reconnu ✓');
+    coffreOk=true;
+    setTimeout(function(){_go('s-coffre')},650);
+    return;
+  }
+  _go(id);
+};
 function toast(msg,cls){
   var t=document.getElementById('toast');
   t.textContent=msg;t.className='vu'+(cls?' '+cls:'');t.id='toast';
