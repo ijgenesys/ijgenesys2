@@ -124,9 +124,13 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
     <div class="mini" onclick="go('s-profil')"><span class="ic">🪪</span><b>Identité vérifiée</b><span>badge KYC</span></div>
     <div class="mini" onclick="go('s-coffre')"><span class="ic">🔐</span><b>Coffre-fort</b><span>journal chiffré</span></div>
   </div>
-  <div class="grid2">
+  <div class="grid2" style="margin-bottom:12px">
     <div class="mini" onclick="go('s-retour')"><span class="ic">🏠</span><b>Trajet retour</b><span>rentrer veillée</span></div>
     <div class="mini" onclick="go('s-event')"><span class="ic">🎪</span><b>Serein Event</b><span>soirée sécurisée</span></div>
+  </div>
+  <div class="grid2">
+    <div class="mini" onclick="go('s-fiche')"><span class="ic">📋</span><b>Fiche de date</b><span>qui, où, quand</span></div>
+    <div class="mini" onclick="go('s-carte')"><span class="ic">🗺️</span><b>Carte sécurité</b><span>par la communauté</span></div>
   </div>
 </div>
 
@@ -144,7 +148,7 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
   </div>
   <div class="stream-note">📡 En situation réelle : <b>triple-appui sur le bouton latéral</b> = démarrage invisible, écran éteint, aucun témoin visuel. Ici, la démo affiche tout pour que vous compreniez.</div>
   <button class="btn danger" id="recbtn" onclick="toggleRec()">● Démarrer l'enregistrement</button>
-  <p style="text-align:center;font-size:11.5px;color:var(--gris);margin-top:12px">Recevable au pénal (liberté de la preuve) — débattu à l'audience, jamais rejeté d'office.</p>
+  <p style="text-align:center;font-size:11.5px;color:var(--gris);margin-top:12px">Recevable au pénal (liberté de la preuve). Chaque audio est <b>transcrit automatiquement</b> : le jour venu, vous transmettez un dossier écrit et daté, pas 40 min de son.</p>
 </div>
 
 <!-- ═══ PROFIL ═══ -->
@@ -170,9 +174,21 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
   <div class="head"><div class="logo">Serein<span>.</span></div><div class="badge">● Veille active</div></div>
   <div class="live-ring"><b id="timer">1:42:00</b><span>avant check-in</span></div>
   <div class="anges"><div class="ange"><span class="d"></span>Léa</div><div class="ange"><span class="d"></span>Maxime</div></div>
-  <div class="row" style="margin-bottom:10px">
+  <div class="row" style="margin-bottom:6px">
     <button class="btn ghost" onclick="toast('📞 Faux appel entrant dans 10 s…')">📞 Faux appel</button>
-    <button class="btn ghost" onclick="toast('✓ Check-in envoyé')">✓ Tout va bien</button>
+    <button class="btn ghost" onclick="toast('✓ Check-in envoyé — appui LONG aurait envoyé l\'alerte cachée')">✓ Tout va bien</button>
+  </div>
+  <p style="font-size:10.5px;color:var(--gris);text-align:center;margin-bottom:10px">Anti-coercition : forcée de valider ? <b style="color:var(--txt)">appui long</b> = "OK" à l'écran, alerte cachée aux anges.</p>
+  <button class="btn" style="background:#F2876B;margin-bottom:10px" onclick="toast('🚕 \'Viens me chercher\' → Léa notifiée avec ta position · option VTC vérifié proposée (8 min)')">🚕 Viens me chercher — sans drame, je veux juste partir</button>
+  <div class="carte" style="margin-bottom:10px">
+    <h3>⌚ Montre connectée <span class="badge" style="float:right;font-size:10px" id="bpm">❤️ 74 bpm</span></h3>
+    <p>Fréquence cardiaque + détection de chute surveillées. Pic anormal → l'app vous interroge, sans réponse → anges alertés.</p>
+    <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('⌚ Pic simulé : 142 bpm + immobilité → \'Tout va bien ?\' sur la montre · sans réponse 60 s → alerte','rouge')">Simuler un pic cardiaque (démo)</button>
+  </div>
+  <div class="carte" style="margin-bottom:10px">
+    <h3>🎤 Mot-code vocal <span class="badge" style="float:right;font-size:10px">écoute active</span></h3>
+    <p>Votre phrase : <b style="color:var(--txt)">« j'ai oublié de rappeler maman »</b> — détectée = SOS silencieux + boîte noire, sans toucher le téléphone. Analyse 100% locale, rien n'est envoyé.</p>
+    <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('🎤 Mot-code détecté → SOS silencieux + boîte noire démarrée + position partagée. Le téléphone n\'a pas bougé de la table.','rouge')">Simuler la détection (démo)</button>
   </div>
   <button class="btn dark" style="margin-bottom:10px" onclick="go('s-noire')">🎙️ Boîte noire</button>
   <div class="carte" style="margin-bottom:10px">
@@ -261,11 +277,53 @@ h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
     <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
       <span class="badge">🛡️ 4 staff sécurité connectés</span>
       <span class="badge">👥 87 membres Serein présentes</span>
+      <span class="badge">📡 Maillage hors-réseau actif</span>
     </div>
   </div>
   <button class="btn" style="margin-bottom:10px" onclick="toast('✓ Soirée rejointe — le staff sécurité peut recevoir vos alertes')">Rejoindre avec le code événement</button>
   <button class="btn danger" onclick="toast('🚨 Alerte envoyée au staff sécurité — un agent arrive vers votre position (zone bar, 40 s)','rouge')">🚨 Alerter le staff du lieu</button>
-  <div class="notice" style="margin-top:14px">Pourquoi c'est fort : l'alerte va à quelqu'un qui est DÉJÀ sur place, formé, en 40 secondes — pas à un proche à 20 minutes. Et pour les organisateurs, "Soirée partenaire Serein" devient un argument d'affluence. C'est eux qui paient.</div>
+  <div class="notice" style="margin-top:14px">Pourquoi c'est fort : l'alerte va à quelqu'un qui est DÉJÀ sur place, en 40 secondes. Et <b>même sans réseau</b> (festival, sous-sol) : votre alerte saute de téléphone en téléphone entre membres Serein jusqu'à trouver du signal. Et pour les organisateurs, "Soirée partenaire Serein" devient un argument d'affluence. C'est eux qui paient.</div>
+</div>
+
+<!-- ═══ FICHE DE DATE ═══ -->
+<div class="screen" id="s-fiche">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
+  <h1>Fiche de date 📋</h1>
+  <p class="sub">30 secondes avant la rencontre. Si quelque chose tourne mal, vos anges savent QUI, OÙ et QUAND — pas juste "elle était sortie".</p>
+  <div class="carte">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px">
+      <div class="avatar" style="width:54px;height:54px;border-radius:14px;font-size:22px;background:linear-gradient(135deg,#F2876B,#6C5CE7)">T</div>
+      <div><b style="font-size:16px">Thomas, 28 ans</b><p style="font-size:12px;color:var(--gris)">photo importée de l'app de rencontre</p></div>
+      <span class="badge" style="margin-left:auto">✓ vérifié Serein</span>
+    </div>
+    <p style="font-size:13px">📍 Café Oberkampf, Paris 11ᵉ<br>⏰ Ce soir, 19h30 · première rencontre<br>💬 Rencontré sur Hinge · pseudo @thomas.prl</p>
+  </div>
+  <button class="btn mint" onclick="toast('📋 Fiche partagée à Léa & Maxime — ils ont le visage, le lieu, l\'heure et le pseudo ✓')">Partager la fiche à mes anges</button>
+  <div class="notice" style="margin-top:14px">Si Thomas est aussi sur Serein, sa fiche affiche son badge d'identité vérifiée — et le fait qu'il accepte la fiche est déjà un signal de confiance. Un prédateur, lui, détestera cette app.</div>
+</div>
+
+<!-- ═══ CARTE SÉCURITÉ ═══ -->
+<div class="screen" id="s-carte">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
+  <h1>Carte sécurité 🗺️</h1>
+  <p class="sub">Construite par les signalements anonymisés de la communauté — les lieux parlent.</p>
+  <div class="carte" style="padding:0;overflow:hidden">
+    <div style="position:relative;height:260px;background:linear-gradient(135deg,#EDE9E0,#F5F1E8)">
+      <div style="position:absolute;inset:0;opacity:.25;background-image:repeating-linear-gradient(0deg,transparent,transparent 34px,#C9C2B4 34px,#C9C2B4 35px),repeating-linear-gradient(90deg,transparent,transparent 34px,#C9C2B4 34px,#C9C2B4 35px)"></div>
+      <div style="position:absolute;left:18%;top:25%;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(229,72,77,.4),transparent 70%)"></div>
+      <div style="position:absolute;left:24%;top:33%;font-size:10px;font-weight:700;color:#B03030">Bar Le K.<br>7 alertes / 30 j</div>
+      <div style="position:absolute;left:58%;top:52%;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(242,176,30,.4),transparent 70%)"></div>
+      <div style="position:absolute;left:63%;top:60%;font-size:10px;font-weight:700;color:#9A6B00">Rue Moret<br>2 alertes</div>
+      <div style="position:absolute;left:35%;top:65%;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(47,169,140,.3),transparent 70%)"></div>
+      <div style="position:absolute;left:42%;top:76%;font-size:10px;font-weight:700;color:#1E6B57">Wanderlust ✓<br>partenaire · 0 alerte</div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:12px">
+    <span class="badge" style="background:rgba(229,72,77,.12);color:#B03030">● zone à vigilance</span>
+    <span class="badge" style="background:rgba(242,176,30,.15);color:#9A6B00">● signalements récents</span>
+    <span class="badge">● lieu partenaire sûr</span>
+  </div>
+  <div class="notice" style="margin-top:12px">Données 100% anonymisées. Et pour les mairies et préfectures, cette carte agrégée vaut de l'or — un revenu de plus, sans jamais vendre une donnée personnelle.</div>
 </div>
 
 <div class="tabs" id="tabs">
@@ -350,8 +408,8 @@ function toggleRec(){
     document.getElementById('rtime').textContent='0:00';
     var btn2=document.getElementById('recbtn');
     btn2.textContent='● Démarrer l\'enregistrement';btn2.classList.add('danger');btn2.classList.remove('mint');
-    ajEntree('Boîte noire — audio '+d,'audio');
-    toast('🔏 Scellée dans le coffre · '+d+' · horodatée');
+    ajEntree('Boîte noire — audio '+d+' · transcription auto ✓');
+    toast('🔏 Scellée · '+d+' · transcrite automatiquement en dossier écrit citable');
   }
 }
 function ajEntree(titre){
@@ -384,6 +442,8 @@ function finRetour(){
     go('s-home');
   },1800);
 }
+/* battement montre */
+setInterval(function(){var b=document.getElementById('bpm');if(b)b.textContent='❤️ '+(70+Math.floor(Math.random()*9))+' bpm'},2000);
 /* chrono sortie */
 var sec=6120;
 setInterval(()=>{sec--;var el=document.getElementById('timer');if(el)el.textContent=Math.floor(sec/3600)+':'+String(Math.floor(sec%3600/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')},1000);
