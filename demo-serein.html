@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Serein</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--fond:#FAF6F0;--carte:#FFFFFF;--carte2:#F3EDE4;--violet:#6C5CE7;--menthe:#2FA98C;--rose:#F2876B;--rouge:#E5484D;--txt:#241E33;--gris:#8A8399;--ligne:rgba(36,30,51,.09)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Outfit',sans-serif;background:var(--fond);color:var(--txt);max-width:430px;margin:0 auto;min-height:100vh;padding-bottom:86px}
+.screen{display:none;padding:22px 20px 20px;animation:fade .3s}
+.screen.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1}}
+.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
+.logo{font-weight:800;font-size:22px}
+.logo span{color:var(--menthe)}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--rose));display:flex;align-items:center;justify-content:center;font-weight:700}
+h1{font-size:26px;font-weight:700;line-height:1.15;margin-bottom:6px}
+.sub{color:var(--gris);font-size:14px;font-weight:300;margin-bottom:20px}
+.carte{background:var(--carte);border:1px solid var(--ligne);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 6px 24px rgba(36,30,51,.06)}
+.carte h3{font-size:15px;font-weight:600;margin-bottom:4px}
+.carte p{font-size:12.5px;color:var(--gris)}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(47,169,140,.12);color:var(--menthe);font-size:11.5px;font-weight:600;padding:5px 11px;border-radius:999px}
+.btn{display:block;width:100%;background:var(--violet);color:#fff;border:none;border-radius:16px;padding:16px;font-family:'Outfit';font-weight:700;font-size:15px;cursor:pointer;transition:.2s;text-align:center}
+.btn:active{transform:scale(.98)}
+.btn.mint{background:var(--menthe);color:#fff}
+.btn.ghost{background:transparent;border:1.5px solid var(--ligne);color:var(--txt);font-weight:500}
+.btn.danger{background:var(--rouge)}
+.btn.dark{background:#241E33;color:#FAF6F0}
+.row{display:flex;gap:10px}.row .btn{flex:1}
+.tabs{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(250,246,240,.94);backdrop-filter:blur(16px);border-top:1px solid var(--ligne);box-shadow:0 -8px 30px rgba(36,30,51,.06);display:none;padding:10px 8px calc(10px + env(safe-area-inset-bottom))}
+.tabs.on{display:flex}
+.tab{flex:1;text-align:center;color:var(--gris);font-size:10.5px;font-weight:500;cursor:pointer;padding:4px 0}
+.tab .ic{font-size:21px;display:block;margin-bottom:3px}
+.tab.on{color:var(--menthe)}
+.mode-date{background:linear-gradient(135deg,#ECE7FF,#FBF3EC);border:1px solid rgba(108,92,231,.25);border-radius:24px;padding:22px 20px;text-align:center;margin-bottom:14px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mini{background:var(--carte);border:1px solid var(--ligne);border-radius:20px;padding:16px 14px;text-align:center;cursor:pointer;box-shadow:0 6px 24px rgba(36,30,51,.06)}
+.mini .ic{font-size:26px;margin-bottom:6px;display:block}
+.mini b{font-size:13px;font-weight:600;display:block}
+.mini span{font-size:11px;color:var(--gris)}
+/* verrouillage */
+#s-lock{padding-top:60px;text-align:center}
+.pinview{display:flex;gap:14px;justify-content:center;margin:26px 0 30px}
+.pin-dot{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--gris);transition:.15s}
+.pin-dot.f{background:var(--menthe);border-color:var(--menthe)}
+.pad{display:grid;grid-template-columns:repeat(3,74px);gap:14px;justify-content:center}
+.key{width:74px;height:74px;border-radius:50%;background:#FFFFFF;border:1px solid var(--ligne);color:var(--txt);box-shadow:0 4px 14px rgba(36,30,51,.07);font-size:26px;font-family:'Outfit';font-weight:500;cursor:pointer;transition:.12s}
+.key:active{background:#ECE7FF;transform:scale(.94)}
+.key.empty{background:transparent;border:none;cursor:default}
+.shake{animation:shake .4s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.lock-hint{margin-top:26px;font-size:11.5px;color:var(--gris);background:#FFFDF9;border:1px dashed var(--ligne);border-radius:14px;padding:12px;text-align:left;line-height:1.6}
+/* boîte noire */
+.rec-ring{width:190px;height:190px;border-radius:50%;margin:6px auto 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle,rgba(229,72,77,.1),transparent 70%);border:2px solid rgba(229,72,77,.45);position:relative}
+.rec-ring.idle{border-color:var(--ligne);background:none}
+.rec-ring b{font-size:32px;font-weight:800}
+.rec-ring span{font-size:10.5px;color:var(--gris);letter-spacing:.14em;text-transform:uppercase;margin-top:2px}
+.rec-dot{width:11px;height:11px;border-radius:50%;background:var(--rouge);margin-bottom:8px;animation:blink 1.1s infinite}
+@keyframes blink{50%{opacity:.15}}
+.wave{display:flex;gap:4px;align-items:flex-end;justify-content:center;height:42px;margin-bottom:18px}
+.wave i{width:5px;background:var(--menthe);border-radius:3px;animation:wv 0.9s infinite ease-in-out}
+@keyframes wv{0%,100%{height:8px}50%{height:38px}}
+.stream-note{background:rgba(47,169,140,.08);border:1px solid rgba(47,169,140,.3);border-radius:14px;padding:12px 14px;font-size:12px;color:#1E6B57;line-height:1.55;margin-bottom:14px}
+.entry{background:var(--carte);border:1px solid var(--ligne);border-radius:18px;box-shadow:0 4px 16px rgba(36,30,51,.05);padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.entry .t{font-size:13.5px;font-weight:500}
+.entry .d{font-size:11px;color:var(--gris);margin-top:2px}
+.lock{color:var(--menthe);font-size:18px}
+.notice{background:rgba(108,92,231,.07);border:1px solid rgba(108,92,231,.22);border-radius:14px;padding:12px 14px;font-size:12px;color:#4A3EB8;margin-bottom:14px;line-height:1.5}
+#toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:#241E33;color:#FAF6F0;box-shadow:0 10px 30px rgba(36,30,51,.25);font-weight:700;font-size:13px;padding:12px 20px;border-radius:999px;opacity:0;transition:.3s;pointer-events:none;z-index:99;max-width:88%;text-align:center}
+#toast.vu{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast.rouge{background:var(--rouge);color:#fff}
+.demo-tag{position:fixed;top:10px;right:10px;background:rgba(139,124,246,.9);color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.1em;padding:5px 10px;border-radius:999px;z-index:50}
+.demo-tag.contrainte{background:var(--rouge)}
+.live-ring{width:150px;height:150px;border-radius:50%;margin:6px auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:conic-gradient(var(--menthe) 0deg 260deg, rgba(36,30,51,.08) 260deg);position:relative}
+.live-ring::before{content:'';position:absolute;inset:9px;border-radius:50%;background:#FFFFFF;box-shadow:inset 0 2px 10px rgba(36,30,51,.05)}
+.live-ring b{position:relative;font-size:26px;font-weight:800}
+.live-ring span{position:relative;font-size:10px;color:var(--gris);letter-spacing:.1em;text-transform:uppercase}
+.anges{display:flex;gap:8px;justify-content:center;margin-bottom:12px}
+.ange{display:flex;align-items:center;gap:7px;background:#FFFFFF;border:1px solid var(--ligne);box-shadow:0 3px 10px rgba(36,30,51,.05);border-radius:999px;padding:7px 13px;font-size:12.5px}
+.ange .d{width:8px;height:8px;border-radius:50%;background:var(--menthe)}
+</style>
+</head>
+<body>
+<div class="demo-tag" id="dtag">DÉMO IJ GENESYS</div>
+<div id="toast"></div>
+
+<!-- ═══ ÉCRAN DE VERROUILLAGE ═══ -->
+<div class="screen on" id="s-lock">
+  <div class="logo" style="font-size:30px">Serein<span>.</span></div>
+  <p class="sub" style="margin-top:8px">Entrez votre code</p>
+  <div class="pinview" id="pinview">
+    <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+  </div>
+  <div class="pad" id="pad">
+    <button class="key">1</button><button class="key">2</button><button class="key">3</button>
+    <button class="key">4</button><button class="key">5</button><button class="key">6</button>
+    <button class="key">7</button><button class="key">8</button><button class="key">9</button>
+    <button class="key empty"></button><button class="key">0</button><button class="key" id="del">⌫</button>
+  </div>
+  <div class="lock-hint">🎓 <b>Pour la démo :</b><br>
+  Code réel : <b style="color:var(--menthe)">2 4 6 8</b> → ouvre la vraie app<br>
+  Code de contrainte : <b style="color:#F87171">2 4 6 9</b> → ouvre le leurre + SOS silencieux<br>
+  <span style="opacity:.7">Même gestuelle, dernier chiffre +1. Indétectable.</span></div>
+</div>
+
+<!-- ═══ ACCUEIL RÉEL ═══ -->
+<div class="screen" id="s-home">
+  <div class="head"><div class="logo">Serein<span>.</span></div><div class="avatar">S</div></div>
+  <h1>Bonsoir Sarah 👋</h1>
+  <p class="sub">Sortez l'esprit libre — on veille.</p>
+  <div class="mode-date">
+    <div style="font-size:36px;margin-bottom:6px">🌙</div>
+    <h3 style="font-size:18px;margin-bottom:3px">Mode Sortie</h3>
+    <p style="font-size:12.5px;color:var(--gris);margin-bottom:14px">Anges gardiens · check-ins · SOS discret</p>
+    <button class="btn mint" onclick="go('s-live');toast('Mode Sortie activé — Léa et Maxime veillent 😇')">Activer</button>
+  </div>
+  <button class="btn dark" style="margin-bottom:14px;display:flex;align-items:center;justify-content:center;gap:10px" onclick="go('s-noire')">
+    🎙️ <span>Boîte noire — enregistrer discrètement</span>
+  </button>
+  <div class="grid2" style="margin-bottom:12px">
+    <div class="mini" onclick="go('s-profil')"><span class="ic">🪪</span><b>Identité vérifiée</b><span>badge KYC</span></div>
+    <div class="mini" onclick="go('s-coffre')"><span class="ic">🔐</span><b>Coffre-fort</b><span>journal chiffré</span></div>
+  </div>
+  <div class="grid2">
+    <div class="mini" onclick="go('s-retour')"><span class="ic">🏠</span><b>Trajet retour</b><span>rentrer veillée</span></div>
+    <div class="mini" onclick="go('s-event')"><span class="ic">🎪</span><b>Serein Event</b><span>soirée sécurisée</span></div>
+  </div>
+</div>
+
+<!-- ═══ BOÎTE NOIRE ═══ -->
+<div class="screen" id="s-noire">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div><div class="badge" id="bn-badge" style="display:none">● flux chiffré actif</div></div>
+  <h1>Boîte noire 🎙️</h1>
+  <p class="sub">L'audio part <b style="color:var(--txt)">directement dans votre coffre</b>, chiffré, en continu. Rien n'est stocké sur ce téléphone — le confisquer ou le casser ne détruit rien.</p>
+  <div class="rec-ring idle" id="ring">
+    <div class="rec-dot" id="rdot" style="display:none"></div>
+    <b id="rtime">0:00</b><span id="rlabel">prête</span>
+  </div>
+  <div class="wave" id="wave" style="display:none">
+    <i style="animation-delay:0s"></i><i style="animation-delay:.12s"></i><i style="animation-delay:.24s"></i><i style="animation-delay:.06s"></i><i style="animation-delay:.3s"></i><i style="animation-delay:.18s"></i><i style="animation-delay:.09s"></i><i style="animation-delay:.27s"></i><i style="animation-delay:.15s"></i>
+  </div>
+  <div class="stream-note">📡 En situation réelle : <b>triple-appui sur le bouton latéral</b> = démarrage invisible, écran éteint, aucun témoin visuel. Ici, la démo affiche tout pour que vous compreniez.</div>
+  <button class="btn danger" id="recbtn" onclick="toggleRec()">● Démarrer l'enregistrement</button>
+  <p style="text-align:center;font-size:11.5px;color:var(--gris);margin-top:12px">Recevable au pénal (liberté de la preuve) — débattu à l'audience, jamais rejeté d'office.</p>
+</div>
+
+<!-- ═══ PROFIL ═══ -->
+<div class="screen" id="s-profil">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
+  <h1>Identité vérifiée</h1>
+  <p class="sub">La preuve que vous êtes réel·le — rien d'autre n'est partagé.</p>
+  <div class="carte" style="border-color:rgba(74,222,187,.3)">
+    <div style="display:flex;align-items:center;gap:14px">
+      <div class="avatar" style="width:60px;height:60px;border-radius:16px;font-size:24px">S</div>
+      <div><b style="font-size:17px">Sarah M.</b><p>26 ans · Paris</p><div class="badge" style="margin-top:6px">✓ Vérifiée par KYC</div></div>
+    </div>
+  </div>
+  <div class="carte" style="text-align:center">
+    <p style="font-size:12px">Code de vérification mutuelle · 10 min</p>
+    <div style="font-size:30px;font-weight:800;letter-spacing:.3em;color:var(--menthe);margin:8px 0">7 2 4 9</div>
+    <p style="font-size:11.5px;color:var(--gris)">L'autre le saisit → badges échangés. Ni nom complet, ni document.</p>
+  </div>
+</div>
+
+<!-- ═══ MODE SORTIE ═══ -->
+<div class="screen" id="s-live">
+  <div class="head"><div class="logo">Serein<span>.</span></div><div class="badge">● Veille active</div></div>
+  <div class="live-ring"><b id="timer">1:42:00</b><span>avant check-in</span></div>
+  <div class="anges"><div class="ange"><span class="d"></span>Léa</div><div class="ange"><span class="d"></span>Maxime</div></div>
+  <div class="row" style="margin-bottom:10px">
+    <button class="btn ghost" onclick="toast('📞 Faux appel entrant dans 10 s…')">📞 Faux appel</button>
+    <button class="btn ghost" onclick="toast('✓ Check-in envoyé')">✓ Tout va bien</button>
+  </div>
+  <button class="btn dark" style="margin-bottom:10px" onclick="go('s-noire')">🎙️ Boîte noire</button>
+  <div class="carte" style="margin-bottom:10px">
+    <h3>🧠 Veille intelligente <span class="badge" style="float:right;font-size:10px">active</span></h3>
+    <p>Surveille les anomalies : immobilité prolongée en zone inconnue · batterie coupée brutalement · sortie de zone prévue</p>
+    <button class="btn ghost" style="margin-top:10px;padding:11px;font-size:12.5px" onclick="toast('🧠 Anomalie simulée : téléphone immobile 47 min, zone inconnue → Léa & Maxime interrogés : \'Avez-vous des nouvelles de Sarah ?\'','rouge')">Simuler une anomalie (démo)</button>
+  </div>
+  <button class="btn danger" onclick="toast('🚨 SOS — position envoyée à Léa & Maxime + 3 membres Serein vérifiées à moins de 300 m notifiées','rouge')">🚨 SOS</button>
+  <p style="text-align:center;font-size:11px;color:var(--gris);margin-top:8px">Le SOS alerte aussi le réseau : <b style="color:var(--txt)">12 membres vérifiées à proximité</b> ce soir</p>
+  <button class="btn ghost" style="margin-top:12px" onclick="go('s-home');toast('Sortie terminée ✓')">Terminer ma sortie</button>
+</div>
+
+<!-- ═══ COFFRE RÉEL ═══ -->
+<div class="screen" id="s-coffre">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
+  <h1>Coffre-fort 🔐</h1>
+  <p class="sub">Chiffré de bout en bout, horodaté, infalsifiable.</p>
+  <div class="notice">Personne d'autre que vous ne peut lire ces entrées — pas même Serein. Transmissibles à un avocat ou une association le jour où VOUS le décidez.</div>
+  <button class="btn" onclick="ajEntree('Entrée scellée','texte')">+ Déposer une entrée</button>
+  <div style="height:14px"></div>
+  <div id="coffre-liste">
+    <div class="entry"><div><div class="t">Entrée scellée</div><div class="d">12 mars 2026 · 01:17 · texte + 2 photos</div></div><div class="lock">🔏</div></div>
+  </div>
+</div>
+
+<!-- ═══ LEURRE (code de contrainte) ═══ -->
+<div class="screen" id="s-decoy">
+  <div class="head"><div class="logo">Serein<span>.</span></div><div class="avatar">S</div></div>
+  <h1>Bonsoir Sarah 👋</h1>
+  <p class="sub">Sortez l'esprit libre — on veille.</p>
+  <div class="mode-date">
+    <div style="font-size:36px;margin-bottom:6px">🌙</div>
+    <h3 style="font-size:18px;margin-bottom:3px">Mode Sortie</h3>
+    <p style="font-size:12.5px;color:var(--gris);margin-bottom:14px">Aucune sortie en cours</p>
+    <button class="btn mint" onclick="toast('Configurez d\\'abord vos anges gardiens')">Activer</button>
+  </div>
+  <div class="grid2">
+    <div class="mini" onclick="toast('Profil : Sarah M. · vérifiée ✓')"><span class="ic">🪪</span><b>Identité vérifiée</b><span>badge KYC</span></div>
+    <div class="mini" onclick="go('s-coffre-d')"><span class="ic">🔐</span><b>Coffre-fort</b><span>journal chiffré</span></div>
+  </div>
+  <div class="carte" style="margin-top:14px"><h3>Dernière sortie</h3><p>Ciné avec Léa · 2 sept. · terminée ✓</p></div>
+</div>
+
+<!-- ═══ COFFRE LEURRE ═══ -->
+<div class="screen" id="s-coffre-d">
+  <div class="head"><div class="logo" onclick="go('s-decoy')">‹ Retour</div></div>
+  <h1>Coffre-fort 🔐</h1>
+  <p class="sub">Chiffré de bout en bout, horodaté.</p>
+  <button class="btn" onclick="toast('Entrée ajoutée ✓')">+ Déposer une entrée</button>
+  <div style="height:14px"></div>
+  <div class="entry"><div><div class="t">Liste de courses</div><div class="d">8 sept. 2026 · 18:22 · texte</div></div><div class="lock">🔏</div></div>
+  <div class="entry"><div><div class="t">Idées cadeaux maman</div><div class="d">29 août 2026 · 12:05 · texte</div></div><div class="lock">🔏</div></div>
+</div>
+
+<!-- ═══ TRAJET RETOUR ═══ -->
+<div class="screen" id="s-retour">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div><div class="badge" id="ret-badge" style="display:none">● trajet veillé</div></div>
+  <h1>Je rentre 🏠</h1>
+  <p class="sub">Le moment le plus risqué de la soirée, enfin couvert. Vos anges suivent votre retour — et s'inquiètent à votre place.</p>
+  <div class="carte" id="ret-idle">
+    <h3>Itinéraire détecté</h3>
+    <p>Le Comptoir Général → Domicile · 28 min (métro L5 + 6 min à pied)</p>
+    <button class="btn mint" style="margin-top:12px" onclick="demRetour()">Partir — activer le suivi</button>
+  </div>
+  <div id="ret-live" style="display:none">
+    <div class="carte">
+      <h3>En route <span style="float:right;color:var(--menthe)" id="ret-eta">arrivée ~00:32</span></h3>
+      <div style="height:8px;background:rgba(36,30,51,.08);border-radius:99px;margin:12px 0 8px;overflow:hidden"><div id="ret-bar" style="height:100%;width:5%;background:linear-gradient(90deg,var(--violet),var(--menthe));transition:width 1s"></div></div>
+      <p id="ret-statut">🚶 En mouvement · position partagée à Léa &amp; Maxime</p>
+    </div>
+    <div class="row" style="margin-bottom:10px">
+      <button class="btn ghost" onclick="toast('⏸️ Arrêt simulé : immobile 12 min hors itinéraire → anges interrogés, SOS proposé sur votre écran','rouge')">Simuler un arrêt (démo)</button>
+    </div>
+    <button class="btn mint" onclick="finRetour()">✓ Je suis bien arrivée</button>
+  </div>
+</div>
+
+<!-- ═══ SEREIN EVENT ═══ -->
+<div class="screen" id="s-event">
+  <div class="head"><div class="logo" onclick="go('s-home')">‹ Retour</div></div>
+  <h1>Serein Event 🎪</h1>
+  <p class="sub">Les organisateurs partenaires (soirées étudiantes, festivals, bars) connectent leur sécurité à l'app.</p>
+  <div class="carte" style="border-color:rgba(139,124,246,.4)">
+    <h3>🎉 Soirée BDE — Wanderlust Paris</h3>
+    <p>Ce soir · partenaire vérifié</p>
+    <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+      <span class="badge">🛡️ 4 staff sécurité connectés</span>
+      <span class="badge">👥 87 membres Serein présentes</span>
+    </div>
+  </div>
+  <button class="btn" style="margin-bottom:10px" onclick="toast('✓ Soirée rejointe — le staff sécurité peut recevoir vos alertes')">Rejoindre avec le code événement</button>
+  <button class="btn danger" onclick="toast('🚨 Alerte envoyée au staff sécurité — un agent arrive vers votre position (zone bar, 40 s)','rouge')">🚨 Alerter le staff du lieu</button>
+  <div class="notice" style="margin-top:14px">Pourquoi c'est fort : l'alerte va à quelqu'un qui est DÉJÀ sur place, formé, en 40 secondes — pas à un proche à 20 minutes. Et pour les organisateurs, "Soirée partenaire Serein" devient un argument d'affluence. C'est eux qui paient.</div>
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab on" data-s="s-home" onclick="tab(this)"><span class="ic">🏠</span>Accueil</div>
+  <div class="tab" data-s="s-noire" onclick="tab(this)"><span class="ic">🎙️</span>Boîte noire</div>
+  <div class="tab" data-s="s-live" onclick="tab(this)"><span class="ic">🌙</span>Sortie</div>
+  <div class="tab" data-s="s-coffre" onclick="tab(this)"><span class="ic">🔐</span>Coffre</div>
+</div>
+
+<script>
+var contrainte=false;
+function go(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',t.dataset.s===id));
+  window.scrollTo(0,0);
+}
+function tab(el){go(el.dataset.s)}
+function toast(msg,cls){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='vu'+(cls?' '+cls:'');t.id='toast';
+  clearTimeout(t._x);t._x=setTimeout(()=>t.className='',3000);
+}
+/* ═══ PAVÉ PIN ═══ */
+var saisie='';
+document.getElementById('pad').addEventListener('click',function(e){
+  if(!e.target.classList.contains('key')||e.target.classList.contains('empty'))return;
+  if(e.target.id==='del'){saisie=saisie.slice(0,-1);majPin();return}
+  if(saisie.length>=4)return;
+  saisie+=e.target.textContent;majPin();
+  if(saisie.length===4)setTimeout(valider,220);
+});
+function majPin(){
+  document.querySelectorAll('.pin-dot').forEach((d,i)=>d.classList.toggle('f',i<saisie.length));
+}
+function valider(){
+  if(saisie==='2468'){
+    contrainte=false;
+    document.getElementById('tabs').classList.add('on');
+    go('s-home');
+  } else if(saisie==='2469'){
+    contrainte=true;
+    document.getElementById('dtag').textContent='🔴 MODE CONTRAINTE (invisible en réel)';
+    document.getElementById('dtag').classList.add('contrainte');
+    document.getElementById('tabs').classList.add('on');
+    // tabs pointent vers le leurre
+    document.querySelector('[data-s="s-home"]').dataset.s='s-decoy';
+    document.querySelector('[data-s="s-coffre"]').dataset.s='s-coffre-d';
+    document.querySelector('[data-s="s-noire"]').style.display='none';
+    document.querySelector('[data-s="s-live"]').style.display='none';
+    go('s-decoy');
+    setTimeout(()=>toast('🔴 En coulisses : SOS silencieux envoyé + boîte noire démarrée + position partagée. Appels des anges masqués.','rouge'),700);
+  } else {
+    document.getElementById('pinview').classList.add('shake');
+    setTimeout(()=>{document.getElementById('pinview').classList.remove('shake');saisie='';majPin()},450);
+    return;
+  }
+  saisie='';majPin();
+}
+/* ═══ BOÎTE NOIRE ═══ */
+var rec=false,rsec=0,rint=null;
+function toggleRec(){
+  var btn=document.getElementById('recbtn');
+  if(!rec){
+    rec=true;rsec=0;
+    document.getElementById('ring').classList.remove('idle');
+    document.getElementById('rdot').style.display='block';
+    document.getElementById('wave').style.display='flex';
+    document.getElementById('rlabel').textContent='flux chiffré → coffre';
+    document.getElementById('bn-badge').style.display='inline-flex';
+    btn.textContent='■ Arrêter et sceller';btn.classList.remove('danger');btn.classList.add('mint');
+    rint=setInterval(()=>{rsec++;document.getElementById('rtime').textContent=Math.floor(rsec/60)+':'+String(rsec%60).padStart(2,'0')},1000);
+    toast('🎙️ Enregistrement — chaque seconde part chiffrée dans le coffre');
+  } else {
+    rec=false;clearInterval(rint);
+    document.getElementById('ring').classList.add('idle');
+    document.getElementById('rdot').style.display='none';
+    document.getElementById('wave').style.display='none';
+    document.getElementById('rlabel').textContent='prête';
+    document.getElementById('bn-badge').style.display='none';
+    var d=Math.floor(rsec/60)+':'+String(rsec%60).padStart(2,'0');
+    document.getElementById('rtime').textContent='0:00';
+    var btn2=document.getElementById('recbtn');
+    btn2.textContent='● Démarrer l\'enregistrement';btn2.classList.add('danger');btn2.classList.remove('mint');
+    ajEntree('Boîte noire — audio '+d,'audio');
+    toast('🔏 Scellée dans le coffre · '+d+' · horodatée');
+  }
+}
+function ajEntree(titre){
+  var n=new Date();
+  var e=document.createElement('div');e.className='entry';
+  e.innerHTML='<div><div class="t">'+titre+'</div><div class="d">'+n.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric'})+' · '+n.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})+'</div></div><div class="lock">🔏</div>';
+  document.getElementById('coffre-liste').prepend(e);
+}
+/* ═══ TRAJET RETOUR ═══ */
+var retInt=null, retP=5;
+function demRetour(){
+  document.getElementById('ret-idle').style.display='none';
+  document.getElementById('ret-live').style.display='block';
+  document.getElementById('ret-badge').style.display='inline-flex';
+  toast('🏠 Trajet veillé — Léa & Maxime suivent votre retour');
+  retP=5;
+  retInt=setInterval(function(){
+    retP=Math.min(96,retP+1.6);
+    document.getElementById('ret-bar').style.width=retP+'%';
+  },1000);
+}
+function finRetour(){
+  clearInterval(retInt);
+  document.getElementById('ret-bar').style.width='100%';
+  toast('🏡 Bien arrivée — Léa & Maxime rassurés. Bonne nuit ✓');
+  setTimeout(function(){
+    document.getElementById('ret-idle').style.display='block';
+    document.getElementById('ret-live').style.display='none';
+    document.getElementById('ret-badge').style.display='none';
+    go('s-home');
+  },1800);
+}
+/* chrono sortie */
+var sec=6120;
+setInterval(()=>{sec--;var el=document.getElementById('timer');if(el)el.textContent=Math.floor(sec/3600)+':'+String(Math.floor(sec%3600/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0')},1000);
+</script>
+</body>
+</html>
